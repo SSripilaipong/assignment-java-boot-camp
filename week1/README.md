@@ -68,9 +68,19 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 
 **10. สั่งซื้อสินค้าด้วยตัวเลือกชำระเงิน default นั้น**
 
-**11. เรียกดูสรุปการชำระเงิน ได้ผลลัพธ์ดังนี้**
+**11. เรียกดูสรุปการสั่งซื้อ ได้ผลลัพธ์ดังนี้**
 
-| field  | value                  |
-|--------|------------------------|
-| payer  | Santhapon Sripilaipong |
-| amount | 399.00                 |
+```json
+{
+  "payer": "Santhapon Sripilaipong",
+  "products": [
+    {
+      "name": "POCA SHOE NMD Sneakers Fashion - Sport Unisex - PSN-Black/White",
+      "quantity": 1
+    }
+  ],
+  "amount": 399.00,
+  "address": "Somewhere in Thailand",
+  "cardNumber": "1111222233334444"
+}
+```
