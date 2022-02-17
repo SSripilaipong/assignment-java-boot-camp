@@ -1,4 +1,4 @@
-package com.example.week1;
+package com.example.week1.acceptance;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

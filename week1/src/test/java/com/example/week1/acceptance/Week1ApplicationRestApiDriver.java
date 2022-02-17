@@ -1,4 +1,4 @@
-package com.example.week1;
+package com.example.week1.acceptance;
 
 import org.springframework.stereotype.Component;
 

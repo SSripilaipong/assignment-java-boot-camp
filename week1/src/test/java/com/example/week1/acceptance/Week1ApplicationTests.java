@@ -1,4 +1,4 @@
-package com.example.week1;
+package com.example.week1.acceptance;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
