@@ -1,9 +1,10 @@
 package com.example.week1.unit;
 
+import com.example.week1.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class LoginRequest {
+public class LoginRequest implements JsonConvertible {
     private final String username;
     private final String password;
 
