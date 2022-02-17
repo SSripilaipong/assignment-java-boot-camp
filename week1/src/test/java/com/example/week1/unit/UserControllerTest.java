@@ -5,8 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 
-@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserControllerTest {
 
     @Autowired
@@ -14,7 +17,11 @@ public class UserControllerTest {
 
     @Test
     public void shouldReturnTokenWhenLoginWithUsernameAndPassword() {
-        LoginRequest request = new LoginRequest("Santhapon", "Admin1234");
+        LoginRequest loginRequest = new LoginRequest("Santhapon", "Admin1234");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> request = new HttpEntity<>(loginRequest.toJsonString(), headers);
+
         LoginSuccessResponse response = rest.postForObject("/login", request, LoginSuccessResponse.class);
         Assertions.assertNotEquals(null, response.getToken());
     }

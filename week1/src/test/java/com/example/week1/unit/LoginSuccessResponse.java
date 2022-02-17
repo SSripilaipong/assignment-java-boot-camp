@@ -1,7 +1,10 @@
 package com.example.week1.unit;
 
 public class LoginSuccessResponse {
-    private final String token;
+    private String token;
+
+    public LoginSuccessResponse() {
+    }
 
     public LoginSuccessResponse(String token) {
         this.token = token;
@@ -9,5 +12,9 @@ public class LoginSuccessResponse {
 
     public String getToken() {
         return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
