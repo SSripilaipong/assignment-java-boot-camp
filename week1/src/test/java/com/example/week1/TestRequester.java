@@ -26,4 +26,8 @@ public class TestRequester {
         headers.add("Authorization", token);
         return rest.exchange(url, HttpMethod.GET, new HttpEntity<>(headers), responseClass);
     }
+
+    public <T> ResponseEntity<T> get(String url, Class<T> responseClass) {
+        return rest.getForEntity(url, responseClass);
+    }
 }

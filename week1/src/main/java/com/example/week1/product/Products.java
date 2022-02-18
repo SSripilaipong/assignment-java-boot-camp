@@ -11,4 +11,11 @@ public class Products implements Iterable<Product> {
     public int size() {
         return 0;
     }
+
+    public void add(Product product) {
+    }
+
+    public Product get(int index) {
+        return new Product();
+    }
 }
