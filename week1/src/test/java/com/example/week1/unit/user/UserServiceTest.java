@@ -4,9 +4,11 @@ import com.example.week1.user.User;
 import com.example.week1.user.UserRepository;
 import com.example.week1.user.UserService;
 import com.example.week1.user.UserTokenManager;
+import com.example.week1.user.exception.LoginFailedException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -53,5 +55,18 @@ public class UserServiceTest {
         String returnedToken = userService.login("MyUsername", "MyPassword");
 
         assertEquals("MyToken", returnedToken);
+    }
+
+    @Test
+    public void shouldThrowLoginFailedExceptionWhenLoginFailed() {
+        UserService userService = new UserService();
+        userService.setUserRepository(userRepository);
+        userService.setTokenManager(tokenManager);
+        when(userRepository.findByUsername("MyUsername"))
+                .thenReturn(Optional.of(new User("MyUsername", "MyPassword")));
+
+        assertThrows(LoginFailedException.class, () -> {
+            userService.login("MyUsername", "WrongPassword");
+        });
     }
 }
