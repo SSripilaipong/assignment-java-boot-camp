@@ -1,9 +1,9 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
-import com.example.week1.unit.user.CurrentUserResponse;
-import com.example.week1.unit.user.LoginRequest;
-import com.example.week1.unit.user.LoginSuccessResponse;
+import com.example.week1.user.response.CurrentUserResponse;
+import com.example.week1.user.request.LoginRequest;
+import com.example.week1.user.response.LoginSuccessResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

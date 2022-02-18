@@ -1,6 +1,6 @@
-package com.example.week1.unit.user;
+package com.example.week1.user.request;
 
-import com.example.week1.JsonConvertible;
+import com.example.week1.rest.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;
 

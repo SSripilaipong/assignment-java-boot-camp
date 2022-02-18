@@ -1,4 +1,4 @@
-package com.example.week1.user;
+package com.example.week1.user.response;
 
 public class CurrentUserResponse {
     private String username;

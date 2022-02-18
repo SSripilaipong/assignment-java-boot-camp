@@ -1,8 +1,11 @@
 package com.example.week1.unit.user;
 
 import com.example.week1.TestRequester;
-import com.example.week1.user.LoginFailedException;
+import com.example.week1.user.exception.LoginFailedException;
 import com.example.week1.user.UserService;
+import com.example.week1.user.request.LoginRequest;
+import com.example.week1.user.response.CurrentUserResponse;
+import com.example.week1.user.response.LoginSuccessResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -1,4 +1,4 @@
-package com.example.week1.user;
+package com.example.week1.user.exception;
 
 public class LoginFailedException extends RuntimeException {
     public LoginFailedException(String username) {
