@@ -9,4 +9,7 @@ public class UserService {
         return username;
     }
 
+    public String getUsernameFromToken(String token) {
+        return "";
+    }
 }

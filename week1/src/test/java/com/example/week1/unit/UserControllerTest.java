@@ -44,4 +44,15 @@ public class UserControllerTest {
 
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
+
+    @Test
+    public void shouldReturnCurrentUser() {
+        Mockito.when(userService.getUsernameFromToken("MyToken")).thenReturn("MyUsername");
+
+        CurrentUserResponse currentUser =
+                requester.getWithToken("/user/me", "MyToken", CurrentUserResponse.class).getBody();
+
+        assert currentUser != null;
+        Assertions.assertEquals("MyUsername", currentUser.getUsername());
+    }
 }
