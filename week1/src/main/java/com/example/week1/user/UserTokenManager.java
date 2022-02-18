@@ -2,13 +2,17 @@ package com.example.week1.user;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Scanner;
+
 @Component
 public class UserTokenManager {
     public String generateTokenFromUsername(String username) {
-        return String.format("I am: %s", username);
+        return String.format("Bearer %s", username);
     }
 
     public String decodeTokenToUsername(String token) {
-        return "";
+        Scanner scanner = new Scanner(token);
+        scanner.next();
+        return scanner.next();
     }
 }

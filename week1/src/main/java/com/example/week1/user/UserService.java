@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public String getUsernameFromToken(String token) {
-        return "";
+        return tokenManager.decodeTokenToUsername(token);
     }
 
     public void register(String username, String password) {
