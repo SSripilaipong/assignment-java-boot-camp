@@ -1,5 +1,7 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.product.Product;
+import com.example.week1.product.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,4 +19,18 @@ public class Week1ApplicationDsl {
         String currentUsername = driver.getCurrentUsername();
         return username.equals(currentUsername);
     }
+
+    public Products searchForProductsWithKeyword(String keyword) {
+        return driver.searchForProductWithKeyword(keyword);
+    }
+
+    public boolean confirmAllProductNamesContainKeyword(Products products, String keyword) {
+        for(Product product: products) {
+            if(!product.getName().contains(keyword)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.product.Products;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,13 @@ class Week1ApplicationTests {
 	void shouldBeAbleToLogin() {
 		loginWithDefaultUser();
 		Assertions.assertTrue(dsl.confirmUserLogin(USERNAME));
+	}
+
+	@Test
+	void shouldBeAbleToSearchForProductsWithKeyword() {
+		Products products = dsl.searchForProductsWithKeyword("NMD");
+		Assertions.assertEquals(4, products.size());
+		Assertions.assertTrue(dsl.confirmAllProductNamesContainKeyword(products, "NMD"));
 	}
 
 	void loginWithDefaultUser() {

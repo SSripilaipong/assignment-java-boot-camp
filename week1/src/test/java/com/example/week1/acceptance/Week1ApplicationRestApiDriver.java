@@ -1,6 +1,7 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
+import com.example.week1.product.Products;
 import com.example.week1.user.response.CurrentUserResponse;
 import com.example.week1.user.request.LoginRequest;
 import com.example.week1.user.response.LoginSuccessResponse;
@@ -30,4 +31,9 @@ public class Week1ApplicationRestApiDriver {
         assert response.getStatusCode() == HttpStatus.OK && response.getBody() != null;
         return response.getBody().getUsername();
     }
+
+    public Products searchForProductWithKeyword(String keyword) {
+        return new Products();
+    }
+
 }
