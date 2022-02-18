@@ -11,10 +11,17 @@ class Week1ApplicationTests {
 	@Autowired
 	private Week1ApplicationDsl dsl;
 
+	private static final String USERNAME = "Santhapon";
+	private static final String PASSWORD = "Admin1234";
+
 	@Test
 	void shouldBeAbleToLogin() {
-		dsl.userLogin("Santhapon", "Admin1234");
-		Assertions.assertTrue(dsl.confirmUserLogin("Santhapon"));
+		loginWithDefaultUser();
+		Assertions.assertTrue(dsl.confirmUserLogin(USERNAME));
+	}
+
+	void loginWithDefaultUser() {
+		dsl.userLogin(USERNAME, PASSWORD);
 	}
 
 }
