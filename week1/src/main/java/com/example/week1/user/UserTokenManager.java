@@ -7,4 +7,8 @@ public class UserTokenManager {
     public String generateTokenFromUsername(String username) {
         return String.format("I am: %s", username);
     }
+
+    public String decodeTokenToUsername(String token) {
+        return "";
+    }
 }

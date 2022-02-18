@@ -69,4 +69,15 @@ public class UserServiceTest {
             userService.login("MyUsername", "WrongPassword");
         });
     }
+
+    @Test
+    public void shouldDecodeUsernameFromTokenUsingTokenManager() {
+        UserService userService = new UserService();
+        userService.setTokenManager(tokenManager);
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+
+        String token = userService.getUsernameFromToken("MyToken");
+
+        assertEquals("MyUsername", token);
+    }
 }
