@@ -1,4 +1,4 @@
-package com.example.week1.unit;
+package com.example.week1.unit.user;
 
 public class LoginSuccessResponse {
     private String token;

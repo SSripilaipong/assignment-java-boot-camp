@@ -1,4 +1,4 @@
-package com.example.week1.unit;
+package com.example.week1.unit.user;
 
 import com.example.week1.JsonConvertible;
 import org.json.JSONException;
