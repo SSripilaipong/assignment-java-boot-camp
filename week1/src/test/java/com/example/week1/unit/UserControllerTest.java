@@ -39,8 +39,8 @@ public class UserControllerTest {
                 .thenThrow(new LoginFailedException("MyUsername"));
 
         LoginRequest loginRequest = new LoginRequest("MyUsername", "MyPassword");
-        ResponseEntity<LoginSuccessResponse> response =
-                requester.post("/login", loginRequest, LoginSuccessResponse.class);
+        ResponseEntity<Object> response =
+                requester.post("/login", loginRequest, Object.class);
 
         Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
