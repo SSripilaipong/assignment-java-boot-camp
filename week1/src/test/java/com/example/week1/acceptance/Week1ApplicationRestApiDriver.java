@@ -33,7 +33,7 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public Products searchForProductWithKeyword(String keyword) {
-        return new Products();
+        return requester.get(String.format("/products?keyword=%s", keyword), Products.class).getBody();
     }
 
 }
