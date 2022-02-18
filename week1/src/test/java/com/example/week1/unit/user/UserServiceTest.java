@@ -45,6 +45,7 @@ public class UserServiceTest {
     public void shouldGenerateTokenWhenLogin() {
         UserService userService = new UserService();
         userService.setUserRepository(userRepository);
+        userService.setTokenManager(tokenManager);
         when(userRepository.findByUsername("MyUsername"))
                 .thenReturn(Optional.of(new User("MyUsername", "MyPassword")));
         when(tokenManager.generateTokenFromUsername("MyUsername")).thenReturn("MyToken");
