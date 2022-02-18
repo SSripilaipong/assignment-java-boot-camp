@@ -1,5 +1,6 @@
 package com.example.week1.user;
 
+import com.example.week1.user.exception.LoginFailedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class UserService {
                 return tokenManager.generateTokenFromUsername(username);
             }
         }
-        return "";
+        throw new LoginFailedException(username);
     }
 
     public void setUserRepository(UserRepository userRepository) {
