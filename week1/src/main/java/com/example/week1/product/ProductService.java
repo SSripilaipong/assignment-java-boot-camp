@@ -22,4 +22,8 @@ public class ProductService {
     public void setProductRepository(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
+    public void addNewProduct(Product newProduct) {
+
+    }
 }
