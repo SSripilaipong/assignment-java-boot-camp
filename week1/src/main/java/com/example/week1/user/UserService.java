@@ -12,4 +12,7 @@ public class UserService {
     public String getUsernameFromToken(String token) {
         return "";
     }
+
+    public void register(String username, String password) {
+    }
 }
