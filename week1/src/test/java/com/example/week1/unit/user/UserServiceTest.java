@@ -8,25 +8,25 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
 
-    @Autowired
-    private UserService userService;
-
-    @MockBean
+    @Mock
     private UserRepository userRepository;
 
     @Test
     public void shouldRegisterNewUser() {
+        UserService userService = new UserService();
+        userService.setUserRepository(userRepository);
+        ArgumentCaptor<User> arg = ArgumentCaptor.forClass(User.class);
+
         userService.register("MyUsername", "MyPassword");
 
-        ArgumentCaptor<User> arg = ArgumentCaptor.forClass(User.class);
         verify(userRepository).save(arg.capture());
         User registeredUser = arg.getValue();
 
