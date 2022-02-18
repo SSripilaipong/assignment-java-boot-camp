@@ -25,11 +25,11 @@ public class Week1Application {
 
 	@PostConstruct
 	public void createInitialProducts() {
-		productService.addNewProduct(new Product(0, "Adidas NMD R1 Pimeknit Core Black"));
-		productService.addNewProduct(new Product(1, "Adidas NMD R1 PK Japan Triple Black"));
-		productService.addNewProduct(new Product(2, "POCA SHOE NMD Sneakers Fashion"));
-		productService.addNewProduct(new Product(3, "Something Irrelevant"));
-		productService.addNewProduct(new Product(4, "Adidas NMD R1 Color Core Black"));
+		productService.addNewProduct(new Product(0, "Adidas NMD R1 Pimeknit Core Black", 9900.00));
+		productService.addNewProduct(new Product(1, "Adidas NMD R1 PK Japan Triple Black", 12900.00));
+		productService.addNewProduct(new Product(2, "POCA SHOE NMD Sneakers Fashion", 399.00));
+		productService.addNewProduct(new Product(3, "Something Irrelevant", 99999.0));
+		productService.addNewProduct(new Product(4, "Adidas NMD R1 Color Core Black", 7990.00));
 	}
 
 	public static void main(String[] args) {

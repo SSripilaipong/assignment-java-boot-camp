@@ -24,8 +24,8 @@ public class ProductControllerTest {
     @Test
     void shouldReturnProductsWithKeywordInNames() {
         Products matchedProducts = new Products();
-        matchedProducts.add(new Product(0, "A"));
-        matchedProducts.add(new Product(1, "B"));
+        matchedProducts.add(new Product(0, "A", 999.0));
+        matchedProducts.add(new Product(1, "B", 888.0));
         when(productService.searchProducts("MyKeyword")).thenReturn(matchedProducts);
 
         Products products =

@@ -25,8 +25,8 @@ public class ProductServiceTest {
         ProductService productService = new ProductService();
         productService.setProductRepository(productRepository);
         List<Product> matchedProducts = new ArrayList<>();
-        matchedProducts.add(new Product(0, "A"));
-        matchedProducts.add(new Product(1, "B"));
+        matchedProducts.add(new Product(0, "A", 999.0));
+        matchedProducts.add(new Product(1, "B", 888.0));
         when(productRepository.findByNameContaining("MyKeyword")).thenReturn(matchedProducts);
 
         Products products = productService.searchProducts("MyKeyword");
@@ -42,7 +42,7 @@ public class ProductServiceTest {
         productService.setProductRepository(productRepository);
         ArgumentCaptor<Product> arg = ArgumentCaptor.forClass(Product.class);
 
-        Product newProduct = new Product(0, "MyProduct");
+        Product newProduct = new Product(0, "MyProduct", 999.0);
         productService.addNewProduct(newProduct);
 
         verify(productRepository).save(newProduct);
