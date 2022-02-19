@@ -28,6 +28,7 @@ public class ProductService {
     }
 
     public Product getProduct(int id) {
-        return new Product();
+        // Actually, when result is not present, should throw exception
+        return productRepository.findById(id).orElse(null);
     }
 }
