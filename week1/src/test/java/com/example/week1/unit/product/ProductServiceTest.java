@@ -39,7 +39,7 @@ public class ProductServiceTest {
         productService.setProductRepository(productRepository);
         ArgumentCaptor<Product> arg = ArgumentCaptor.forClass(Product.class);
 
-        Product newProduct = new Product(0, "MyProduct", 999.0);
+        Product newProduct = getDummyProduct();
         productService.addNewProduct(newProduct);
 
         verify(productRepository).save(newProduct);

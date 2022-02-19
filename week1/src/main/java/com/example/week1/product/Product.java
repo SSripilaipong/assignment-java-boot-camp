@@ -2,6 +2,7 @@ package com.example.week1.product;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class Product {
@@ -44,12 +45,12 @@ public class Product {
     }
 
     @Override
-    public boolean equals(Object that) {
-        if(that instanceof Product) {
-            Product q = (Product)that;
-            return q.id.equals(this.id) && q.name.equals(this.name) && q.price.equals(this.price);
-        }
-        return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product = (Product) o;
+        return Objects.equals(id, product.id) && Objects.equals(name, product.name) &&
+                Objects.equals(price, product.price);
     }
 
     public String getDescription() {

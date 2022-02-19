@@ -14,6 +14,10 @@ public class ProductDummyFactory {
         return productList;
     }
 
+    public static Product getDummyProduct() {
+        return new Product(0, "MyProduct", 999.0);
+    }
+
     public static Products getDummyProducts() {
         Products products = new Products();
         for(Product product : getDummyProductList()) {
