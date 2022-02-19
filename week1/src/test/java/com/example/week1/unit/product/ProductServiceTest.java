@@ -22,34 +22,33 @@ public class ProductServiceTest {
 
     @Test
     void shouldReturnProductsWithKeywordInNames() {
-        ProductService productService = new ProductService();
-        productService.setProductRepository(productRepository);
         when(productRepository.findByNameContaining("MyKeyword")).thenReturn(getDummyProductList());
 
-        Products products = productService.searchProducts("MyKeyword");
+        Products products = getProductServiceWithMock().searchProducts("MyKeyword");
 
         assertEquals(getDummyProducts(), products);
     }
 
     @Test
     void shouldAddNewProduct() {
-        ProductService productService = new ProductService();
-        productService.setProductRepository(productRepository);
-
         Product newProduct = getDummyProduct();
-        productService.addNewProduct(newProduct);
+        getProductServiceWithMock().addNewProduct(newProduct);
 
         verify(productRepository).save(newProduct);
     }
 
     @Test
     void shouldFindProductById() {
-        ProductService productService = new ProductService();
-        productService.setProductRepository(productRepository);
         when(productRepository.findById(1234)).thenReturn(Optional.of(getDummyProduct()));
 
-        Product product = productService.getProduct(1234);
+        Product product = getProductServiceWithMock().getProduct(1234);
 
         assertEquals(getDummyProduct(), product);
+    }
+
+    private ProductService getProductServiceWithMock() {
+        ProductService productService = new ProductService();
+        productService.setProductRepository(productRepository);
+        return productService;
     }
 }
