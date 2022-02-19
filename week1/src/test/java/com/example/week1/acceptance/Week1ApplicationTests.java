@@ -32,7 +32,7 @@ class Week1ApplicationTests {
 	@Test
 	void shouldBeAbleToGetDetailOfAProduct() {
 		Product product = dsl.getProductDetail(2);
-		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion - Sport Unisex - PSN-Black/White", product.getName());
+		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion", product.getName());
 		Assertions.assertEquals("These are the best shoes.", product.getDescription());
 		Assertions.assertEquals("Poca Shoes", product.getBrand());
 		Assertions.assertEquals("Casual", product.getOccasion());
