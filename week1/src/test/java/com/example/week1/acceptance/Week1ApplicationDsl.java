@@ -33,4 +33,7 @@ public class Week1ApplicationDsl {
         return true;
     }
 
+    public Product getProductDetail(int id) {
+        return driver.getProductDetailById(id);
+    }
 }

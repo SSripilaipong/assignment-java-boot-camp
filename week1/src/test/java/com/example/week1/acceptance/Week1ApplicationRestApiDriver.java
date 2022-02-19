@@ -1,6 +1,7 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
+import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import com.example.week1.user.response.CurrentUserResponse;
 import com.example.week1.user.request.LoginRequest;
@@ -36,4 +37,7 @@ public class Week1ApplicationRestApiDriver {
         return requester.get(String.format("/products?keyword=%s", keyword), Products.class).getBody();
     }
 
+    public Product getProductDetailById(int id) {
+        return new Product();
+    }
 }

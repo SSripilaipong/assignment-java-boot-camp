@@ -51,4 +51,16 @@ public class Product {
         }
         return false;
     }
+
+    public String getDescription() {
+        return null;
+    }
+
+    public String getBrand() {
+        return null;
+    }
+
+    public String getOccasion() {
+        return null;
+    }
 }
