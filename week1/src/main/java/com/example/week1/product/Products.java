@@ -32,4 +32,12 @@ public class Products implements Iterable<Product> {
     public List<Product> getProducts() {
         return products;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if(other instanceof Products) {
+            return this.products.equals(((Products) other).products);
+        }
+        return false;
+    }
 }

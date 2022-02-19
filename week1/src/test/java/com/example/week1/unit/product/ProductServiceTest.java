@@ -7,9 +7,10 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.week1.unit.product.ProductDummyFactory.*;
+import static com.example.week1.unit.product.ProductDummyFactory.getDummyProductList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -24,16 +25,12 @@ public class ProductServiceTest {
     void shouldReturnProductsWithKeywordInNames() {
         ProductService productService = new ProductService();
         productService.setProductRepository(productRepository);
-        List<Product> matchedProducts = new ArrayList<>();
-        matchedProducts.add(new Product(0, "A", 999.0));
-        matchedProducts.add(new Product(1, "B", 888.0));
+        List<Product> matchedProducts = getDummyProductList();
         when(productRepository.findByNameContaining("MyKeyword")).thenReturn(matchedProducts);
 
         Products products = productService.searchProducts("MyKeyword");
 
-        assertEquals(2, products.size());
-        assertEquals("A", products.get(0).getName());
-        assertEquals("B", products.get(1).getName());
+        assertEquals(getDummyProducts(), products);
     }
 
     @Test

@@ -42,4 +42,13 @@ public class Product {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object that) {
+        if(that instanceof Product) {
+            Product q = (Product)that;
+            return q.id.equals(this.id) && q.name.equals(this.name) && q.price.equals(this.price);
+        }
+        return false;
+    }
 }
