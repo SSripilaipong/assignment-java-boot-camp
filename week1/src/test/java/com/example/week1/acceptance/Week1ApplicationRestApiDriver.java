@@ -38,6 +38,6 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public Product getProductDetailById(int id) {
-        return new Product();
+        return requester.get(String.format("/products/%d", id), Product.class).getBody();
     }
 }
