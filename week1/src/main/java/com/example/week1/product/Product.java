@@ -10,14 +10,20 @@ public class Product {
     private Integer id;
     private String name;
     private Double price;
+    private String description;
+    private String brand;
+    private String occasion;
 
     public Product() {
     }
 
-    public Product(Integer id, String name, Double price) {
+    public Product(Integer id, String name, Double price, String description, String brand, String occasion) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.description = description;
+        this.brand = brand;
+        this.occasion = occasion;
     }
 
     public String getName() {
@@ -54,14 +60,26 @@ public class Product {
     }
 
     public String getDescription() {
-        return null;
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getBrand() {
-        return null;
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public String getOccasion() {
-        return null;
+        return occasion;
+    }
+
+    public void setOccasion(String occasion) {
+        this.occasion = occasion;
     }
 }
