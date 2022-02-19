@@ -1,5 +1,6 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.cart.CartItems;
 import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,16 @@ class Week1ApplicationTests {
 		Assertions.assertEquals("Poca Shoes", product.getBrand());
 		Assertions.assertEquals("Casual", product.getOccasion());
 		Assertions.assertEquals(399.00, product.getPrice());
+	}
+
+	@Test
+	void shouldBeAbleToAddItemToCart() {
+		loginWithDefaultUser();
+		dsl.addItemToCart(2, 1);
+		CartItems items = dsl.getCartItems();
+		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion", items.get(0).getProductName());
+		Assertions.assertEquals(1, items.get(0).getQuantity());
+		Assertions.assertEquals(1, items.get(0).getPricePerUnit());
 	}
 
 	void loginWithDefaultUser() {

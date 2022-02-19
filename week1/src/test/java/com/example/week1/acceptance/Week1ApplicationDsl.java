@@ -1,5 +1,6 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.cart.CartItems;
 import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,13 @@ public class Week1ApplicationDsl {
 
     public Product getProductDetail(int id) {
         return driver.getProductDetailById(id);
+    }
+
+    public void addItemToCart(int productId, int quantity) {
+        driver.addItemToCartWithProductId(productId, quantity);
+    }
+
+    public CartItems getCartItems() {
+        return new CartItems();
     }
 }

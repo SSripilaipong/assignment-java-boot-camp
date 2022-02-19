@@ -40,4 +40,7 @@ public class Week1ApplicationRestApiDriver {
     public Product getProductDetailById(int id) {
         return requester.get(String.format("/products/%d", id), Product.class).getBody();
     }
+
+    public void addItemToCartWithProductId(int productId, int quantity) {
+    }
 }
