@@ -25,11 +25,9 @@ public class ProductControllerTest {
 
     @Test
     void shouldReturnProductsWithKeywordInNames() {
-        Products matchedProducts = getDummyProducts();
-        when(productService.searchProducts("MyKeyword")).thenReturn(matchedProducts);
+        when(productService.searchProducts("MyKeyword")).thenReturn(getDummyProducts());
 
-        Products products =
-                requester.get(String.format("/products?keyword=%s", "MyKeyword"), Products.class).getBody();
+        Products products = requester.get(String.format("/products?keyword=%s", "MyKeyword"), Products.class).getBody();
 
         assert products != null;
         assertEquals(getDummyProducts(), products);
