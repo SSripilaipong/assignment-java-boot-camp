@@ -28,5 +28,6 @@ public class CartService {
     }
 
     public void clearCart(String username) {
+        cartRepository.deleteById(username);
     }
 }
