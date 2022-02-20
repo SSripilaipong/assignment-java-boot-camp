@@ -43,6 +43,13 @@ public class CartServiceTest {
         assertEquals(new Cart("MyUsername"), myCart);
     }
 
+    @Test
+    void shouldClearMyCart() {
+        getCartServiceWithMock().clearCart("MyUsername");
+
+        verify(cartRepository).deleteById("MyUsername");
+    }
+
     private CartService getCartServiceWithMock() {
         CartService cartService = new CartService();
         cartService.setCartRepository(cartRepository);
