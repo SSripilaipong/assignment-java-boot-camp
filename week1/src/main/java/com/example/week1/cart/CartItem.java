@@ -1,8 +1,9 @@
 package com.example.week1.cart;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class CartItem {
+public class CartItem implements Serializable {
     private Integer productId;
     private Integer quantity;
 

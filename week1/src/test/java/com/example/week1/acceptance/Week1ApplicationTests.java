@@ -47,7 +47,7 @@ class Week1ApplicationTests {
 		CartItemsResponse items = dsl.getCartItems();
 		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion", items.get(0).getProductName());
 		Assertions.assertEquals(1, items.get(0).getQuantity());
-		Assertions.assertEquals(1, items.get(0).getPricePerUnit());
+		Assertions.assertEquals(399.0, items.get(0).getPricePerUnit());
 	}
 
 	void loginWithDefaultUser() {
