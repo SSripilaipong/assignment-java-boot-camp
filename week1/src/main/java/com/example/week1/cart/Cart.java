@@ -10,7 +10,12 @@ public class Cart {
     private String username;
     private ArrayList<CartItem> items;
 
+    public Cart() {
+        items = new ArrayList<>();
+    }
+
     public void addItem(CartItem item) {
+        items.add(item);
     }
 
     public String getUsername() {

@@ -2,6 +2,8 @@ package com.example.week1.cart;
 
 import com.example.week1.cart.request.CartItemAddingRequest;
 import com.example.week1.cart.response.CartItemAddedResponse;
+import com.example.week1.cart.response.CartItemsResponse;
+import com.example.week1.product.ProductService;
 import com.example.week1.user.UserTokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +17,9 @@ public class CartController {
     private CartService cartService;
 
     @Autowired
+    private ProductService productService;
+
+    @Autowired
     private UserTokenManager tokenManager;
 
     @PostMapping(
@@ -26,5 +31,11 @@ public class CartController {
             @RequestHeader("Authorization") String token, @RequestBody CartItemAddingRequest request) {
         cartService.addItemToMyCart(tokenManager.decodeTokenToUsername(token), request.toCartItem());
         return new CartItemAddedResponse("OK");
+    }
+
+    @GetMapping("/cart/items")
+    public CartItemsResponse getMyCartItems(@RequestHeader("Authorization") String token) {
+        return CartItemsResponse.fromCart(
+                productService, cartService.getMyCart(tokenManager.decodeTokenToUsername(token)));
     }
 }
