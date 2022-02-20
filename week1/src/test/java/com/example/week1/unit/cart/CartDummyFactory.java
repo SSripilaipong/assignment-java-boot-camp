@@ -28,4 +28,27 @@ public class CartDummyFactory {
     public static CartItem getDummyCartItem() {
         return new CartItem(123, 999);
     }
+
+    public static Product getDummyProductA() {
+        return new Product(1, "A", 20.0, "", "", "");
+    }
+
+    public static Product getDummyProductB() {
+        return new Product(2, "B", 10.0, "", "", "");
+    }
+
+    public static Cart getDummyCartWithProductAAndB() {
+        Cart cart = new Cart("MyUsername");
+        cart.addItem(new CartItem(getDummyProductA().getId(), 2));
+        cart.addItem(new CartItem(getDummyProductB().getId(), 3));
+        return cart;
+    }
+
+    public static CartItemResponse getDummyCartItemResponseA() {
+        return new CartItemResponse(1, "A", 2, 20.0);
+    }
+
+    public static CartItemResponse getDummyCartItemResponseB() {
+        return new CartItemResponse(2, "B", 3, 10.0);
+    }
 }
