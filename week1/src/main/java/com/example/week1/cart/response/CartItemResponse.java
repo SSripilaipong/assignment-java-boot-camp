@@ -1,5 +1,7 @@
 package com.example.week1.cart.response;
 
+import com.example.week1.product.Product;
+
 import java.util.Objects;
 
 public class CartItemResponse {
@@ -16,6 +18,10 @@ public class CartItemResponse {
         this.productName = productName;
         this.quantity = quantity;
         this.pricePerUnit = pricePerUnit;
+    }
+
+    public static CartItemResponse ofProduct(Product product, Integer quantity) {
+        return new CartItemResponse(product.getId(), product.getName(), quantity, product.getPrice());
     }
 
     @Override

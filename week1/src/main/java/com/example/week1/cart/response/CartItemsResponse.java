@@ -18,8 +18,7 @@ public class CartItemsResponse {
         CartItemsResponse response = new CartItemsResponse();
         for(CartItem item : cart.getItems()) {
             Product product = productService.getProduct(item.getProductId());
-            response.add(new CartItemResponse(
-                    product.getId(), product.getName(), item.getQuantity(), product.getPrice()));
+            response.add(CartItemResponse.ofProduct(product, item.getQuantity()));
         }
         return response;
     }
