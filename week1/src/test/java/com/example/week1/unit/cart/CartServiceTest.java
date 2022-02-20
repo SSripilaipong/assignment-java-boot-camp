@@ -34,6 +34,15 @@ public class CartServiceTest {
         assertEquals(getDummyCartWithDummyItem(), savedCart);
     }
 
+    @Test
+    void shouldCreateCartWhenCartNotExist() {
+        when(cartRepository.findById("MyUsername")).thenReturn(Optional.empty());
+
+        Cart myCart = getCartServiceWithMock().getMyCart("MyUsername");
+
+        assertEquals(new Cart("MyUsername"), myCart);
+    }
+
     private CartService getCartServiceWithMock() {
         CartService cartService = new CartService();
         cartService.setCartRepository(cartRepository);
