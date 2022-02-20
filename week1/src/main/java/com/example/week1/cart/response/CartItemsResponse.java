@@ -39,4 +39,8 @@ public class CartItemsResponse {
     public void setItems(ArrayList<CartItemResponse> items) {
         this.items = items;
     }
+
+    public Integer size() {
+        return null;
+    }
 }

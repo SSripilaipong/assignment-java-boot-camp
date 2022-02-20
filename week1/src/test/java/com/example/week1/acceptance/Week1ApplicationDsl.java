@@ -45,4 +45,8 @@ public class Week1ApplicationDsl {
     public CartItemsResponse getCartItems() {
         return driver.getCartItems();
     }
+
+    public void clearCart() {
+        driver.clearCart();
+    }
 }

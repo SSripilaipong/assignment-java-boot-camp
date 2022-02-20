@@ -43,11 +43,21 @@ class Week1ApplicationTests {
 	@Test
 	void shouldBeAbleToAddItemToCart() {
 		loginWithDefaultUser();
+		dsl.clearCart();
 		dsl.addItemToCart(2, 1);
 		CartItemsResponse items = dsl.getCartItems();
 		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion", items.get(0).getProductName());
 		Assertions.assertEquals(1, items.get(0).getQuantity());
 		Assertions.assertEquals(399.0, items.get(0).getPricePerUnit());
+	}
+
+	@Test
+	void shouldBeAbleToClearCart() {
+		loginWithDefaultUser();
+		dsl.clearCart();
+		dsl.addItemToCart(2, 1);
+		dsl.clearCart();
+		Assertions.assertEquals(0, dsl.getCartItems().size());
 	}
 
 	void loginWithDefaultUser() {

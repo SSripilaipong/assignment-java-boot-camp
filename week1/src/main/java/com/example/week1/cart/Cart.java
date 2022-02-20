@@ -2,6 +2,7 @@ package com.example.week1.cart;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -9,6 +10,7 @@ import java.util.Objects;
 public class Cart {
     @Id
     private String username;
+    @Lob
     private ArrayList<CartItem> items;
 
     public Cart() {

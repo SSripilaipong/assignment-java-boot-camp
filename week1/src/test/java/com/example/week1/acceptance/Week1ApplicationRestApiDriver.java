@@ -54,4 +54,7 @@ public class Week1ApplicationRestApiDriver {
         return requester.getWithToken(
                 "/cart/items", userToken, CartItemsResponse.class).getBody();
     }
+
+    public void clearCart() {
+    }
 }
