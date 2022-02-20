@@ -20,6 +20,16 @@ public class TestRequester {
         return rest.postForEntity(url, request, responseClass);
     }
 
+    public <T, R extends JsonConvertible> ResponseEntity<T> postWithToken(
+            String url, String token, R requestObject, Class<T> responseClass) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Authorization", token);
+        HttpEntity<String> request = new HttpEntity<>(requestObject.toJsonString(), headers);
+
+        return rest.postForEntity(url, request, responseClass);
+    }
+
     public <T, R extends JsonConvertible> ResponseEntity<T> getWithToken(
             String url, String token, Class<T> responseClass) {
         HttpHeaders headers = new HttpHeaders();
