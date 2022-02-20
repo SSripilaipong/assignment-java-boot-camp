@@ -20,8 +20,12 @@ public class CartDummyFactory {
     }
 
     public static Cart getDummyCart() {
-        Cart myCart = new Cart();
-        myCart.addItem(new CartItem(123, 999));
+        Cart myCart = new Cart("MyUsername");
+        myCart.addItem(getDummyCartItem());
         return myCart;
+    }
+
+    public static CartItem getDummyCartItem() {
+        return new CartItem(123, 999);
     }
 }

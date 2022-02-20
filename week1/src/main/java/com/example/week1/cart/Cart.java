@@ -14,6 +14,11 @@ public class Cart {
         items = new ArrayList<>();
     }
 
+    public Cart(String username) {
+        this.username = username;
+        items = new ArrayList<>();
+    }
+
     public void addItem(CartItem item) {
         items.add(item);
     }

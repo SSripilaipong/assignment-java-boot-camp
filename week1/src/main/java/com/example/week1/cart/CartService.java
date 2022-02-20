@@ -10,4 +10,7 @@ public class CartService {
     public Cart getMyCart(String username) {
         return new Cart();
     }
+
+    public void setCartRepository(CartRepository cartRepository) {
+    }
 }
