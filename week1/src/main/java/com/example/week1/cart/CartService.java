@@ -28,6 +28,8 @@ public class CartService {
     }
 
     public void clearCart(String username) {
-        cartRepository.deleteById(username);
+        if(cartRepository.existsById(username)) {
+            cartRepository.deleteById(username);
+        }
     }
 }
