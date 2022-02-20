@@ -26,4 +26,7 @@ public class CartService {
     public void setCartRepository(CartRepository cartRepository) {
         this.cartRepository = cartRepository;
     }
+
+    public void clearCart(String username) {
+    }
 }

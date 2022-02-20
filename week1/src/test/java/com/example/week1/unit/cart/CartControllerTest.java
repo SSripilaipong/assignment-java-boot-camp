@@ -67,4 +67,15 @@ public class CartControllerTest {
         assertEquals(getDummyCartItemResponse(), cartItemsResponse.get(0));
     }
 
+    @Test
+    void shouldClearCart() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+
+        HttpStatus statusCode = requester.deleteWithToken(
+                "/cart", "MyToken", CartItemsResponse.class).getStatusCode();
+
+        assert statusCode.equals(HttpStatus.OK);
+        verify(cartService).clearCart("MyUsername");
+    }
+
 }
