@@ -56,5 +56,7 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public void clearCart() {
+        assert requester.deleteWithToken("/cart", userToken, Object.class)
+                .getStatusCode().equals(HttpStatus.OK);
     }
 }
