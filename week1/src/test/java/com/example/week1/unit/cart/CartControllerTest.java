@@ -88,7 +88,7 @@ public class CartControllerTest {
         when(productService.getProduct(getDummyProductA().getId())).thenReturn(getDummyProductA());
         when(productService.getProduct(getDummyProductB().getId())).thenReturn(getDummyProductB());
         when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
-        when(cartService.getMyCart("MyUsername")).thenReturn(getDummyCartWithProductAAndB());
+        when(cartService.summarizeMyCart("MyUsername")).thenReturn(getDummyCartSummaryWithProductAAndB());
 
         CartSummaryResponse cartSummaryResponse = requester.getWithToken(
                 "/cart", "MyToken", CartSummaryResponse.class).getBody();

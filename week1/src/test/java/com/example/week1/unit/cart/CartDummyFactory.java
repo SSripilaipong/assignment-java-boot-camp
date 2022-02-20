@@ -2,6 +2,7 @@ package com.example.week1.unit.cart;
 
 import com.example.week1.cart.Cart;
 import com.example.week1.cart.CartItem;
+import com.example.week1.cart.CartSummary;
 import com.example.week1.cart.response.CartItemResponse;
 import com.example.week1.product.Product;
 
@@ -37,11 +38,11 @@ public class CartDummyFactory {
         return new Product(2, "B", 10.0, "", "", "");
     }
 
-    public static Cart getDummyCartWithProductAAndB() {
-        Cart cart = new Cart("MyUsername");
-        cart.addItem(new CartItem(getDummyProductA().getId(), 2));
-        cart.addItem(new CartItem(getDummyProductB().getId(), 3));
-        return cart;
+    public static CartSummary getDummyCartSummaryWithProductAAndB() {
+        CartSummary summary = new CartSummary("MyUsername");
+        summary.addItem(new CartItem(getDummyProductA().getId(), 2));
+        summary.addItem(new CartItem(getDummyProductB().getId(), 3));
+        return summary;
     }
 
     public static CartItemResponse getDummyCartItemResponseA() {
