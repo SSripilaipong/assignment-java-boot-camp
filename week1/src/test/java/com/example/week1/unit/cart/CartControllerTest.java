@@ -4,6 +4,8 @@ import com.example.week1.TestRequester;
 import com.example.week1.cart.CartService;
 import com.example.week1.cart.request.CartItemAddingRequest;
 import com.example.week1.cart.response.CartItemAddedResponse;
+import com.example.week1.cart.response.CartItemsResponse;
+import com.example.week1.product.ProductService;
 import com.example.week1.user.UserTokenManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +17,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import static com.example.week1.unit.cart.CartDummyFactory.*;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CartControllerTest {
 
     @MockBean
     CartService cartService;
+
+    @MockBean
+    ProductService productService;
 
     @MockBean
     UserTokenManager tokenManager;
@@ -46,4 +53,18 @@ public class CartControllerTest {
 
         assertEquals(HttpStatus.CREATED, statusCode);
     }
+
+    @Test
+    void shouldReturnMyCartItems() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+        when(productService.getProduct(getDummyProductId())).thenReturn(getDummyProduct());
+        when(cartService.getMyCart("MyUsername")).thenReturn(getDummyCart());
+
+        CartItemsResponse cartItemsResponse = requester.getWithToken(
+                "/cart/items", "MyToken", CartItemsResponse.class).getBody();
+
+        assert cartItemsResponse != null;
+        assertEquals(getDummyCartItemResponse(), cartItemsResponse.get(0));
+    }
+
 }
