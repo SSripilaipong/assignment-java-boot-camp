@@ -45,6 +45,10 @@ public class CartDummyFactory {
         return summary;
     }
 
+    public static Double getTotalPriceOfDummyCartWithProductAAndB() {
+        return 20.0*2 + 10.0*3;
+    }
+
     public static CartItemResponse getDummyCartItemResponseA() {
         return new CartItemResponse(1, "A", 2, 20.0);
     }

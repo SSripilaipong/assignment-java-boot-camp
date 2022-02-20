@@ -1,15 +1,11 @@
 package com.example.week1.unit.cart;
 
 import com.example.week1.TestRequester;
-import com.example.week1.cart.Cart;
-import com.example.week1.cart.CartItem;
 import com.example.week1.cart.CartService;
 import com.example.week1.cart.request.CartItemAddingRequest;
 import com.example.week1.cart.response.CartItemAddedResponse;
-import com.example.week1.cart.response.CartItemResponse;
 import com.example.week1.cart.response.CartItemsResponse;
 import com.example.week1.cart.response.CartSummaryResponse;
-import com.example.week1.product.Product;
 import com.example.week1.product.ProductService;
 import com.example.week1.user.UserTokenManager;
 import org.junit.jupiter.api.Test;
@@ -85,18 +81,29 @@ public class CartControllerTest {
 
     @Test
     void shouldShowAllItemsWhenSummarizeCart() {
-        when(productService.getProduct(getDummyProductA().getId())).thenReturn(getDummyProductA());
-        when(productService.getProduct(getDummyProductB().getId())).thenReturn(getDummyProductB());
-        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
-        when(cartService.summarizeMyCart("MyUsername")).thenReturn(getDummyCartSummaryWithProductAAndB());
-
-        CartSummaryResponse cartSummaryResponse = requester.getWithToken(
-                "/cart", "MyToken", CartSummaryResponse.class).getBody();
+        CartSummaryResponse cartSummaryResponse = summarizeCartWithMock();
 
         assert cartSummaryResponse != null;
         assertEquals(2, cartSummaryResponse.getItems().size());
         assertEquals(getDummyCartItemResponseA(), cartSummaryResponse.getItems().get(0));
         assertEquals(getDummyCartItemResponseB(), cartSummaryResponse.getItems().get(1));
+    }
+
+    @Test
+    void shouldReturnTotalPriceWhenSummarizeCart() {
+        CartSummaryResponse cartSummaryResponse = summarizeCartWithMock();
+
+        assert cartSummaryResponse != null;
+        assertEquals(getTotalPriceOfDummyCartWithProductAAndB(), cartSummaryResponse.getTotalPrice());
+    }
+
+    private CartSummaryResponse summarizeCartWithMock() {
+        when(productService.getProduct(getDummyProductA().getId())).thenReturn(getDummyProductA());
+        when(productService.getProduct(getDummyProductB().getId())).thenReturn(getDummyProductB());
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+        when(cartService.summarizeMyCart("MyUsername")).thenReturn(getDummyCartSummaryWithProductAAndB());
+
+        return requester.getWithToken("/cart", "MyToken", CartSummaryResponse.class).getBody();
     }
 
 }
