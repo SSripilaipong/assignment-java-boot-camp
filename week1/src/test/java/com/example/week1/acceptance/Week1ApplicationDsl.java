@@ -43,6 +43,6 @@ public class Week1ApplicationDsl {
     }
 
     public CartItemsResponse getCartItems() {
-        return new CartItemsResponse();
+        return driver.getCartItems();
     }
 }

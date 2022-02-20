@@ -1,6 +1,8 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
+import com.example.week1.cart.request.CartItemAddingRequest;
+import com.example.week1.cart.response.CartItemsResponse;
 import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import com.example.week1.user.response.CurrentUserResponse;
@@ -42,5 +44,12 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public void addItemToCartWithProductId(int productId, int quantity) {
+        HttpStatus statusCode = requester.postWithToken("/cart/items", userToken,
+                new CartItemAddingRequest(1234, 999), Object.class).getStatusCode();
+    }
+
+    public CartItemsResponse getCartItems() {
+        return requester.getWithToken(
+                "/cart/items", userToken, CartItemsResponse.class).getBody();
     }
 }
