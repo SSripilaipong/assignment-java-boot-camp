@@ -3,6 +3,7 @@ package com.example.week1.cart;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Entity
 public class Cart {
@@ -21,6 +22,14 @@ public class Cart {
 
     public void addItem(CartItem item) {
         items.add(item);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cart cart = (Cart) o;
+        return Objects.equals(username, cart.username) && Objects.equals(items, cart.items);
     }
 
     public String getUsername() {
