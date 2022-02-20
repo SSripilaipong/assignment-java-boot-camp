@@ -41,6 +41,6 @@ public class CartItemsResponse {
     }
 
     public Integer size() {
-        return null;
+        return this.items.size();
     }
 }
