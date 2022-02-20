@@ -12,8 +12,7 @@ public class CartService {
     private CartRepository cartRepository;
 
     public void addItemToMyCart(String username, CartItem item) {
-        Optional<Cart> matchedCart = cartRepository.findById(username);
-        Cart cart = matchedCart.orElseGet(() -> new Cart(username));
+        Cart cart = getMyCart(username);
 
         cart.addItem(item);
 
