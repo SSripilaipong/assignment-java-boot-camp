@@ -38,4 +38,10 @@ public class CartController {
         return CartItemsResponse.fromCart(
                 productService, cartService.getMyCart(tokenManager.decodeTokenToUsername(token)));
     }
+
+    @DeleteMapping("/cart")
+    public void clearMyCart(@RequestHeader("Authorization") String token) {
+        cartService.clearCart(tokenManager.decodeTokenToUsername(token));
+    }
+
 }
