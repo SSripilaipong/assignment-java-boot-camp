@@ -44,7 +44,8 @@ public class CartServiceTest {
     }
 
     @Test
-    void shouldClearMyCart() {
+    void shouldClearMyCartIfExists() {
+        when(cartRepository.existsById("MyUsername")).thenReturn(true);
         getCartServiceWithMock().clearCart("MyUsername");
 
         verify(cartRepository).deleteById("MyUsername");
