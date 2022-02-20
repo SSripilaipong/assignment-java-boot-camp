@@ -6,9 +6,11 @@ import com.example.week1.cart.response.CartSummaryResponse;
 import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class Week1ApplicationTests {
@@ -22,24 +24,24 @@ class Week1ApplicationTests {
 	@Test
 	void shouldBeAbleToLogin() {
 		loginWithDefaultUser();
-		Assertions.assertTrue(dsl.confirmUserLogin(USERNAME));
+		assertTrue(dsl.confirmUserLogin(USERNAME));
 	}
 
 	@Test
 	void shouldBeAbleToSearchForProductsWithKeyword() {
 		Products products = dsl.searchForProductsWithKeyword("NMD");
-		Assertions.assertEquals(4, products.size());
-		Assertions.assertTrue(dsl.confirmAllProductNamesContainKeyword(products, "NMD"));
+		assertEquals(4, products.size());
+		assertTrue(dsl.confirmAllProductNamesContainKeyword(products, "NMD"));
 	}
 
 	@Test
 	void shouldBeAbleToGetDetailOfAProduct() {
 		Product product = dsl.getProductDetail(2);
-		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion", product.getName());
-		Assertions.assertEquals("These are the best shoes.", product.getDescription());
-		Assertions.assertEquals("Poca Shoes", product.getBrand());
-		Assertions.assertEquals("Casual", product.getOccasion());
-		Assertions.assertEquals(399.00, product.getPrice());
+		assertEquals("POCA SHOE NMD Sneakers Fashion", product.getName());
+		assertEquals("These are the best shoes.", product.getDescription());
+		assertEquals("Poca Shoes", product.getBrand());
+		assertEquals("Casual", product.getOccasion());
+		assertEquals(399.00, product.getPrice());
 	}
 
 	@Test
@@ -48,9 +50,9 @@ class Week1ApplicationTests {
 		dsl.clearCart();
 		dsl.addItemToCart(2, 1);
 		CartItemsResponse items = dsl.getCartItems();
-		Assertions.assertEquals("POCA SHOE NMD Sneakers Fashion", items.get(0).getProductName());
-		Assertions.assertEquals(1, items.get(0).getQuantity());
-		Assertions.assertEquals(399.0, items.get(0).getPricePerUnit());
+		assertEquals("POCA SHOE NMD Sneakers Fashion", items.get(0).getProductName());
+		assertEquals(1, items.get(0).getQuantity());
+		assertEquals(399.0, items.get(0).getPricePerUnit());
 	}
 
 	@Test
@@ -59,7 +61,7 @@ class Week1ApplicationTests {
 		dsl.clearCart();
 		dsl.addItemToCart(2, 1);
 		dsl.clearCart();
-		Assertions.assertEquals(0, dsl.getCartItems().size());
+		assertEquals(0, dsl.getCartItems().size());
 	}
 
 	@Test
@@ -70,14 +72,12 @@ class Week1ApplicationTests {
 		dsl.addItemToCart(2, 3);
 		CartSummaryResponse summary = dsl.summarizeCart();
 
-		Assertions.assertEquals(2, summary.getItems().size());
-		Assertions.assertEquals(
-				new CartItemResponse(0, "Adidas NMD R1 Pimeknit Core Black", 1, 9900.00),
+		assertEquals(2, summary.getItems().size());
+		assertEquals(new CartItemResponse(0, "Adidas NMD R1 Pimeknit Core Black", 1, 9900.00),
 				summary.getItems().get(0));
-		Assertions.assertEquals(
-				new CartItemResponse(2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00),
+		assertEquals(new CartItemResponse(2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00),
 				summary.getItems().get(1));
-		Assertions.assertEquals(11097.00, summary.getTotalPrice());
+		assertEquals(11097.00, summary.getTotalPrice());
 	}
 
 	void loginWithDefaultUser() {

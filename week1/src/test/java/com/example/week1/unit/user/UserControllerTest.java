@@ -6,7 +6,6 @@ import com.example.week1.user.UserService;
 import com.example.week1.user.request.LoginRequest;
 import com.example.week1.user.response.CurrentUserResponse;
 import com.example.week1.user.response.LoginSuccessResponse;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserControllerTest {
@@ -33,7 +34,7 @@ public class UserControllerTest {
                 requester.post("/login", loginRequest, LoginSuccessResponse.class).getBody();
 
         assert response != null;
-        Assertions.assertEquals("MyToken", response.getToken());
+        assertEquals("MyToken", response.getToken());
     }
 
     @Test
@@ -45,7 +46,7 @@ public class UserControllerTest {
         ResponseEntity<Object> response =
                 requester.post("/login", loginRequest, Object.class);
 
-        Assertions.assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
+        assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
     }
 
     @Test
@@ -56,6 +57,6 @@ public class UserControllerTest {
                 requester.getWithToken("/user/me", "MyToken", CurrentUserResponse.class).getBody();
 
         assert currentUser != null;
-        Assertions.assertEquals("MyUsername", currentUser.getUsername());
+        assertEquals("MyUsername", currentUser.getUsername());
     }
 }
