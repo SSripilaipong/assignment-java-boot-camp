@@ -9,7 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -33,5 +35,15 @@ public class CartControllerTest {
         requester.postWithToken("/cart/items", "MyToken", cartItemAddingRequest, CartItemAddedResponse.class);
 
         verify(cartService).addItemToMyCart("MyUsername", cartItemAddingRequest.toCartItem());
+    }
+
+    @Test
+    void shouldReturnStatusCode201AfterAddedItemToCart() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+
+        HttpStatus statusCode = requester.postWithToken("/cart/items", "MyToken",
+                new CartItemAddingRequest(1234, 999), Object.class).getStatusCode();
+
+        assertEquals(HttpStatus.CREATED, statusCode);
     }
 }
