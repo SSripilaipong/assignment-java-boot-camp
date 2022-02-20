@@ -58,7 +58,7 @@ public class CartControllerTest {
     void shouldReturnMyCartItems() {
         when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
         when(productService.getProduct(getDummyProductId())).thenReturn(getDummyProduct());
-        when(cartService.getMyCart("MyUsername")).thenReturn(getDummyCart());
+        when(cartService.getMyCart("MyUsername")).thenReturn(getDummyCartWithDummyItem());
 
         CartItemsResponse cartItemsResponse = requester.getWithToken(
                 "/cart/items", "MyToken", CartItemsResponse.class).getBody();

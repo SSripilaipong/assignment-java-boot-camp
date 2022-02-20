@@ -19,7 +19,7 @@ public class CartDummyFactory {
         return new Product(getDummyProductId(), "MyProduct", 20.0, "", "", "");
     }
 
-    public static Cart getDummyCart() {
+    public static Cart getDummyCartWithDummyItem() {
         Cart myCart = new Cart("MyUsername");
         myCart.addItem(getDummyCartItem());
         return myCart;

@@ -31,7 +31,7 @@ public class CartServiceTest {
         verify(cartRepository).save(arg.capture());
         Cart savedCart = arg.getValue();
 
-        assertEquals(getDummyCart(), savedCart);  // TODO: rename getDummyCart to getDummyCartWithDummyItem
+        assertEquals(getDummyCartWithDummyItem(), savedCart);
     }
 
     private CartService getCartServiceWithMock() {
