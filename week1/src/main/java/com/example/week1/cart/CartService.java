@@ -21,7 +21,7 @@ public class CartService {
     }
 
     public Cart getMyCart(String username) {
-        return new Cart();
+        return cartRepository.findById(username).orElseGet(() -> new Cart(username));
     }
 
     public void setCartRepository(CartRepository cartRepository) {
