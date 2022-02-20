@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class CartSummaryResponse {
     private ArrayList<CartItemResponse> items;
+    private Double totalPrice;
 
     public CartSummaryResponse() {
         items = new ArrayList<>();
@@ -16,15 +17,22 @@ public class CartSummaryResponse {
 
     public static CartSummaryResponse fromCartSummary(ProductService productService, CartSummary summary) {
         CartSummaryResponse response = new CartSummaryResponse();
+        double totalPrice = 0.0;
         for(CartItem item : summary.getItems()) {
             Product product = productService.getProduct(item.getProductId());
             response.addItem(CartItemResponse.ofProduct(product, item.getQuantity()));
+            totalPrice += product.getPrice() * item.getQuantity();
         }
+        response.setTotalPrice(totalPrice);
         return response;
     }
 
     public Double getTotalPrice() {
-        return null;
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     private void addItem(CartItemResponse cartItemResponse) {
