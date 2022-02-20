@@ -45,7 +45,9 @@ public class Week1ApplicationRestApiDriver {
 
     public void addItemToCartWithProductId(int productId, int quantity) {
         HttpStatus statusCode = requester.postWithToken("/cart/items", userToken,
-                new CartItemAddingRequest(1234, 999), Object.class).getStatusCode();
+                new CartItemAddingRequest(productId, quantity), Object.class).getStatusCode();
+
+        assert statusCode == HttpStatus.CREATED;
     }
 
     public CartItemsResponse getCartItems() {
