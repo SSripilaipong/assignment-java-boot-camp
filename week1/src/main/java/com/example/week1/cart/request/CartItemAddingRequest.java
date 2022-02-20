@@ -2,6 +2,8 @@ package com.example.week1.cart.request;
 
 import com.example.week1.cart.CartItem;
 import com.example.week1.rest.JsonConvertible;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Objects;
 
@@ -19,11 +21,19 @@ public class CartItemAddingRequest implements JsonConvertible {
 
     @Override
     public String toJsonString() {
-        return null;
+        JSONObject json = new JSONObject();
+        try {
+            json.put("productId", productId);
+            json.put("quantity", quantity);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return json.toString();
     }
 
     public CartItem toCartItem() {
-        return new CartItem();
+        return new CartItem(productId, quantity);
     }
 
     public Integer getProductId() {
