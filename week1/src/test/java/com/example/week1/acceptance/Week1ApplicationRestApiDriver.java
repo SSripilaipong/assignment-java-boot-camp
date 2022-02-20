@@ -3,6 +3,7 @@ package com.example.week1.acceptance;
 import com.example.week1.TestRequester;
 import com.example.week1.cart.request.CartItemAddingRequest;
 import com.example.week1.cart.response.CartItemsResponse;
+import com.example.week1.cart.response.CartSummaryResponse;
 import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import com.example.week1.user.response.CurrentUserResponse;
@@ -58,5 +59,9 @@ public class Week1ApplicationRestApiDriver {
     public void clearCart() {
         assert requester.deleteWithToken("/cart", userToken, Object.class)
                 .getStatusCode().equals(HttpStatus.OK);
+    }
+
+    public CartSummaryResponse summarizeCart() {
+        return new CartSummaryResponse();
     }
 }

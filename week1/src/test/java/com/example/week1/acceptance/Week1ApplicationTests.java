@@ -1,6 +1,8 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.cart.response.CartItemResponse;
 import com.example.week1.cart.response.CartItemsResponse;
+import com.example.week1.cart.response.CartSummaryResponse;
 import com.example.week1.product.Product;
 import com.example.week1.product.Products;
 import org.junit.jupiter.api.Test;
@@ -58,6 +60,24 @@ class Week1ApplicationTests {
 		dsl.addItemToCart(2, 1);
 		dsl.clearCart();
 		Assertions.assertEquals(0, dsl.getCartItems().size());
+	}
+
+	@Test
+	void shouldBeAbleToSummarizeCart() {
+		loginWithDefaultUser();
+		dsl.clearCart();
+		dsl.addItemToCart(0, 1);
+		dsl.addItemToCart(2, 3);
+		CartSummaryResponse summary = dsl.summarizeCart();
+
+		Assertions.assertEquals(2, summary.getItems().size());
+		Assertions.assertEquals(
+				new CartItemResponse(0, "Adidas NMD R1 Pimeknit Core Black", 1, 9900.00),
+				summary.getItems().get(0));
+		Assertions.assertEquals(
+				new CartItemResponse(2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00),
+				summary.getItems().get(1));
+		Assertions.assertEquals(11097.00, summary.getTotalPrice());
 	}
 
 	void loginWithDefaultUser() {
