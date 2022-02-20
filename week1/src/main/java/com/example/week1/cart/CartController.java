@@ -3,6 +3,7 @@ package com.example.week1.cart;
 import com.example.week1.cart.request.CartItemAddingRequest;
 import com.example.week1.cart.response.CartItemAddedResponse;
 import com.example.week1.cart.response.CartItemsResponse;
+import com.example.week1.cart.response.CartSummaryResponse;
 import com.example.week1.product.ProductService;
 import com.example.week1.user.UserTokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,12 @@ public class CartController {
     public CartItemsResponse getMyCartItems(@RequestHeader("Authorization") String token) {
         return CartItemsResponse.fromCart(
                 productService, cartService.getMyCart(tokenManager.decodeTokenToUsername(token)));
+    }
+
+    @GetMapping("/cart")
+    public CartSummaryResponse summarizeCart(@RequestHeader("Authorization") String token) {
+        return CartSummaryResponse.fromCartSummary(
+                productService, cartService.summarizeMyCart(tokenManager.decodeTokenToUsername(token)));
     }
 
     @DeleteMapping("/cart")

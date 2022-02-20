@@ -32,4 +32,8 @@ public class CartService {
             cartRepository.deleteById(username);
         }
     }
+
+    public CartSummary summarizeMyCart(String username) {
+        return new CartSummary();  // TODO: implement this
+    }
 }

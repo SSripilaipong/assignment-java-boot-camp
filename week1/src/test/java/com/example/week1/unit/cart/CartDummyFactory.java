@@ -39,7 +39,7 @@ public class CartDummyFactory {
     }
 
     public static CartSummary getDummyCartSummaryWithProductAAndB() {
-        CartSummary summary = new CartSummary("MyUsername");
+        CartSummary summary = new CartSummary();
         summary.addItem(new CartItem(getDummyProductA().getId(), 2));
         summary.addItem(new CartItem(getDummyProductB().getId(), 3));
         return summary;
