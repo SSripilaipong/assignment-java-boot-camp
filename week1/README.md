@@ -30,7 +30,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 
 ```json
 {
-  "products": [
+  "items": [
     {
       "name": "POCA SHOE NMD Sneakers Fashion - Sport Unisex - PSN-Black/White",
       "quantity": 1,
@@ -73,7 +73,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 ```json
 {
   "payer": "Santhapon Sripilaipong",
-  "products": [
+  "items": [
     {
       "name": "POCA SHOE NMD Sneakers Fashion - Sport Unisex - PSN-Black/White",
       "quantity": 1
