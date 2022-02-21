@@ -3,8 +3,6 @@ package com.example.week1.cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class CartService {
 
@@ -33,7 +31,4 @@ public class CartService {
         }
     }
 
-    public CartSummary summarizeMyCart(String username) {
-        return new CartSummary();  // TODO: implement this
-    }
 }

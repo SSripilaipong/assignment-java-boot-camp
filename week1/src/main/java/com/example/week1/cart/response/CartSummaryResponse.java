@@ -1,7 +1,7 @@
 package com.example.week1.cart.response;
 
+import com.example.week1.cart.Cart;
 import com.example.week1.cart.CartItem;
-import com.example.week1.cart.CartSummary;
 import com.example.week1.product.Product;
 import com.example.week1.product.ProductService;
 
@@ -15,10 +15,10 @@ public class CartSummaryResponse {
         items = new ArrayList<>();
     }
 
-    public static CartSummaryResponse fromCartSummary(ProductService productService, CartSummary summary) {
+    public static CartSummaryResponse fromCart(ProductService productService, Cart cart) {
         CartSummaryResponse response = new CartSummaryResponse();
         double totalPrice = 0.0;
-        for(CartItem item : summary.getItems()) {
+        for(CartItem item : cart.getItems()) {
             Product product = productService.getProduct(item.getProductId());
             response.addItem(CartItemResponse.ofProduct(product, item.getQuantity()));
             totalPrice += product.getPrice() * item.getQuantity();
