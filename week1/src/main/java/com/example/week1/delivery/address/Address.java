@@ -35,7 +35,12 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address1 = (Address) o;
-        return Objects.equals(fullName, address1.fullName) && Objects.equals(address, address1.address) && Objects.equals(postCode, address1.postCode) && Objects.equals(district, address1.district) && Objects.equals(province, address1.province) && Objects.equals(phone, address1.phone);
+        return Objects.equals(id, address1.id) && Objects.equals(fullName, address1.fullName) && Objects.equals(address, address1.address) && Objects.equals(postCode, address1.postCode) && Objects.equals(district, address1.district) && Objects.equals(province, address1.province) && Objects.equals(phone, address1.phone);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fullName, address, postCode, district, province, phone);
     }
 
     public Integer getId() {

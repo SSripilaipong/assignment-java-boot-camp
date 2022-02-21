@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class AddressResponse {
 
+    private Integer id;
     private String fullName;
     private String address;
     private String postCode;
@@ -14,8 +15,9 @@ public class AddressResponse {
     public AddressResponse() {
     }
 
-    public AddressResponse(
-            String fullName, String address, String postCode, String district, String province, String phone) {
+    public AddressResponse(Integer id, String fullName, String address, String postCode, String district,
+                           String province, String phone) {
+        this.id = id;
         this.fullName = fullName;
         this.address = address;
         this.postCode = postCode;
@@ -25,12 +27,14 @@ public class AddressResponse {
     }
 
     public static AddressResponse fromAddress(Address address) {
-        return new AddressResponse(address.getFullName(), address.getAddress(), address.getPostCode(),
+        return new AddressResponse(address.getId(), address.getFullName(), address.getAddress(), address.getPostCode(),
                 address.getDistrict(), address.getProvince(), address.getPhone());
     }
 
     public Address toAddress() {
-        return new Address(getFullName(), getAddress(), getPostCode(), getDistrict(), getProvince(), getPhone());
+        Address result = new Address(getFullName(), getAddress(), getPostCode(), getDistrict(), getProvince(), getPhone());
+        result.setId(id);
+        return result;
     }
 
     @Override
@@ -38,7 +42,15 @@ public class AddressResponse {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AddressResponse that = (AddressResponse) o;
-        return Objects.equals(fullName, that.fullName) && Objects.equals(address, that.address) && Objects.equals(postCode, that.postCode) && Objects.equals(district, that.district) && Objects.equals(province, that.province) && Objects.equals(phone, that.phone);
+        return Objects.equals(id, that.id) && Objects.equals(fullName, that.fullName) && Objects.equals(address, that.address) && Objects.equals(postCode, that.postCode) && Objects.equals(district, that.district) && Objects.equals(province, that.province) && Objects.equals(phone, that.phone);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFullName() {
