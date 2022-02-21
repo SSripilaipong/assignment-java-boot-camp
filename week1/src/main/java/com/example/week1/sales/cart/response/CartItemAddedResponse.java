@@ -1,4 +1,4 @@
-package com.example.week1.cart.response;
+package com.example.week1.sales.cart.response;
 
 public class CartItemAddedResponse {
     private String message;

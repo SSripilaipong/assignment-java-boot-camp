@@ -1,4 +1,4 @@
-package com.example.week1.product;
+package com.example.week1.sales.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

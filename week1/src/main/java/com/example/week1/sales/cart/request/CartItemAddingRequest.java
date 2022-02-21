@@ -1,6 +1,6 @@
-package com.example.week1.cart.request;
+package com.example.week1.sales.cart.request;
 
-import com.example.week1.cart.CartItem;
+import com.example.week1.sales.cart.CartItem;
 import com.example.week1.rest.JsonConvertible;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,10 +1,10 @@
-package com.example.week1.cart;
+package com.example.week1.sales.cart;
 
-import com.example.week1.cart.request.CartItemAddingRequest;
-import com.example.week1.cart.response.CartItemAddedResponse;
-import com.example.week1.cart.response.CartItemsResponse;
-import com.example.week1.cart.response.CartSummaryResponse;
-import com.example.week1.product.ProductService;
+import com.example.week1.sales.cart.request.CartItemAddingRequest;
+import com.example.week1.sales.cart.response.CartItemAddedResponse;
+import com.example.week1.sales.cart.response.CartItemsResponse;
+import com.example.week1.sales.cart.response.CartSummaryResponse;
+import com.example.week1.sales.product.ProductService;
 import com.example.week1.user.UserTokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

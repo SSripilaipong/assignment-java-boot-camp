@@ -1,10 +1,10 @@
 package com.example.week1.acceptance;
 
-import com.example.week1.cart.response.CartItemResponse;
-import com.example.week1.cart.response.CartItemsResponse;
-import com.example.week1.cart.response.CartSummaryResponse;
-import com.example.week1.product.Product;
-import com.example.week1.product.Products;
+import com.example.week1.sales.cart.response.CartItemResponse;
+import com.example.week1.sales.cart.response.CartItemsResponse;
+import com.example.week1.sales.cart.response.CartSummaryResponse;
+import com.example.week1.sales.product.Product;
+import com.example.week1.sales.product.Products;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

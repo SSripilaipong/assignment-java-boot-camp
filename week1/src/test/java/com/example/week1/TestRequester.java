@@ -1,6 +1,5 @@
 package com.example.week1;
 
-import com.example.week1.cart.response.CartItemsResponse;
 import com.example.week1.rest.JsonConvertible;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.web.client.TestRestTemplate;

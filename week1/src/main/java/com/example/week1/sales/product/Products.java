@@ -1,4 +1,4 @@
-package com.example.week1.product;
+package com.example.week1.sales.product;
 
 import java.util.ArrayList;
 import java.util.Iterator;

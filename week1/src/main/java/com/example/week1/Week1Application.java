@@ -1,7 +1,7 @@
 package com.example.week1;
 
-import com.example.week1.product.Product;
-import com.example.week1.product.ProductService;
+import com.example.week1.sales.product.Product;
+import com.example.week1.sales.product.ProductService;
 import com.example.week1.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;

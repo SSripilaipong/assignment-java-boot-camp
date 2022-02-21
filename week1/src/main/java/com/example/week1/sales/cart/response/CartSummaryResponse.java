@@ -1,9 +1,9 @@
-package com.example.week1.cart.response;
+package com.example.week1.sales.cart.response;
 
-import com.example.week1.cart.Cart;
-import com.example.week1.cart.CartItem;
-import com.example.week1.product.Product;
-import com.example.week1.product.ProductService;
+import com.example.week1.sales.cart.Cart;
+import com.example.week1.sales.cart.CartItem;
+import com.example.week1.sales.product.Product;
+import com.example.week1.sales.product.ProductService;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
-package com.example.week1.unit.product;
+package com.example.week1.unit.sales.product;
 
-import com.example.week1.product.Product;
-import com.example.week1.product.Products;
+import com.example.week1.sales.product.Product;
+import com.example.week1.sales.product.Products;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,6 @@
-package com.example.week1.cart.response;
+package com.example.week1.sales.cart.response;
 
-import com.example.week1.product.Product;
+import com.example.week1.sales.product.Product;
 
 import java.util.Objects;
 

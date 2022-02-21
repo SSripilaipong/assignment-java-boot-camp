@@ -1,4 +1,4 @@
-package com.example.week1.cart;
+package com.example.week1.sales.cart;
 
 import java.io.Serializable;
 import java.util.Objects;

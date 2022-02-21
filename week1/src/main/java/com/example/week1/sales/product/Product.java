@@ -1,4 +1,4 @@
-package com.example.week1.product;
+package com.example.week1.sales.product;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

@@ -1,11 +1,11 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
-import com.example.week1.cart.request.CartItemAddingRequest;
-import com.example.week1.cart.response.CartItemsResponse;
-import com.example.week1.cart.response.CartSummaryResponse;
-import com.example.week1.product.Product;
-import com.example.week1.product.Products;
+import com.example.week1.sales.cart.request.CartItemAddingRequest;
+import com.example.week1.sales.cart.response.CartItemsResponse;
+import com.example.week1.sales.cart.response.CartSummaryResponse;
+import com.example.week1.sales.product.Product;
+import com.example.week1.sales.product.Products;
 import com.example.week1.user.response.CurrentUserResponse;
 import com.example.week1.user.request.LoginRequest;
 import com.example.week1.user.response.LoginSuccessResponse;

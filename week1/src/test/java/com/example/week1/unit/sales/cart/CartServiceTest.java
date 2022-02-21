@@ -1,8 +1,8 @@
-package com.example.week1.unit.cart;
+package com.example.week1.unit.sales.cart;
 
-import com.example.week1.cart.Cart;
-import com.example.week1.cart.CartRepository;
-import com.example.week1.cart.CartService;
+import com.example.week1.sales.cart.Cart;
+import com.example.week1.sales.cart.CartRepository;
+import com.example.week1.sales.cart.CartService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -11,7 +11,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static com.example.week1.unit.cart.CartDummyFactory.*;
+import static com.example.week1.unit.sales.cart.CartDummyFactory.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

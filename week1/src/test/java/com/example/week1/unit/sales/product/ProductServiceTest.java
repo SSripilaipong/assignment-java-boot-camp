@@ -1,6 +1,10 @@
-package com.example.week1.unit.product;
+package com.example.week1.unit.sales.product;
 
-import com.example.week1.product.*;
+import com.example.week1.sales.product.Product;
+import com.example.week1.sales.product.ProductRepository;
+import com.example.week1.sales.product.ProductService;
+import com.example.week1.sales.product.Products;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -8,9 +12,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
-import static com.example.week1.unit.product.ProductDummyFactory.*;
-import static com.example.week1.unit.product.ProductDummyFactory.getDummyProductList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -22,16 +23,16 @@ public class ProductServiceTest {
 
     @Test
     void shouldReturnProductsWithKeywordInNames() {
-        when(productRepository.findByNameContaining("MyKeyword")).thenReturn(getDummyProductList());
+        when(productRepository.findByNameContaining("MyKeyword")).thenReturn(ProductDummyFactory.getDummyProductList());
 
         Products products = getProductServiceWithMock().searchProducts("MyKeyword");
 
-        assertEquals(getDummyProducts(), products);
+        Assertions.assertEquals(ProductDummyFactory.getDummyProducts(), products);
     }
 
     @Test
     void shouldAddNewProduct() {
-        Product newProduct = getDummyProduct();
+        Product newProduct = ProductDummyFactory.getDummyProduct();
         getProductServiceWithMock().addNewProduct(newProduct);
 
         verify(productRepository).save(newProduct);
@@ -39,11 +40,11 @@ public class ProductServiceTest {
 
     @Test
     void shouldFindProductById() {
-        when(productRepository.findById(1234)).thenReturn(Optional.of(getDummyProduct()));
+        when(productRepository.findById(1234)).thenReturn(Optional.of(ProductDummyFactory.getDummyProduct()));
 
         Product product = getProductServiceWithMock().getProduct(1234);
 
-        assertEquals(getDummyProduct(), product);
+        Assertions.assertEquals(ProductDummyFactory.getDummyProduct(), product);
     }
 
     private ProductService getProductServiceWithMock() {

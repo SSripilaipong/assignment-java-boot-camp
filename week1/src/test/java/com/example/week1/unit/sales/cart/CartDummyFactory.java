@@ -1,9 +1,9 @@
-package com.example.week1.unit.cart;
+package com.example.week1.unit.sales.cart;
 
-import com.example.week1.cart.Cart;
-import com.example.week1.cart.CartItem;
-import com.example.week1.cart.response.CartItemResponse;
-import com.example.week1.product.Product;
+import com.example.week1.sales.cart.Cart;
+import com.example.week1.sales.cart.CartItem;
+import com.example.week1.sales.cart.response.CartItemResponse;
+import com.example.week1.sales.product.Product;
 
 public class CartDummyFactory {
 
