@@ -62,6 +62,7 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public CartSummaryResponse summarizeCart() {
-        return new CartSummaryResponse();
+        return requester.getWithToken(
+                "/cart", userToken, CartSummaryResponse.class).getBody();
     }
 }
