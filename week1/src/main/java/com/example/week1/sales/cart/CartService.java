@@ -2,6 +2,9 @@ package com.example.week1.sales.cart;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @Service
 public class CartService {
@@ -31,6 +34,10 @@ public class CartService {
         }
     }
 
+    @Transactional
     public void setMyCartAddressId(String username, Integer addressId) {
+        Cart cart = getMyCart(username);
+        cart.setAddressId(addressId);
+        cartRepository.save(cart);
     }
 }

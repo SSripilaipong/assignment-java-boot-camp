@@ -12,6 +12,7 @@ public class Cart {
     private String username;
     @Lob
     private ArrayList<CartItem> items;
+    private Integer addressId;
 
     public Cart() {
         items = new ArrayList<>();
@@ -24,6 +25,7 @@ public class Cart {
 
     public Cart(String username, Integer addressId) {
         this.username = username;
+        this.addressId = addressId;
         items = new ArrayList<>();
     }
 
@@ -36,7 +38,7 @@ public class Cart {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(username, cart.username) && Objects.equals(items, cart.items);
+        return Objects.equals(addressId, cart.addressId) && Objects.equals(username, cart.username) && Objects.equals(items, cart.items);
     }
 
     public String getUsername() {
@@ -55,4 +57,11 @@ public class Cart {
         this.items = items;
     }
 
+    public Integer getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(Integer addressId) {
+        this.addressId = addressId;
+    }
 }
