@@ -68,6 +68,7 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public AddressResponse getDefaultAddress() {
-        return new AddressResponse();  // TODO: implement this
+        return requester.getWithToken(
+                "/delivery/address/default", userToken, AddressResponse.class).getBody();
     }
 }
