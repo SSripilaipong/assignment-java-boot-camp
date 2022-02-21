@@ -2,6 +2,7 @@ package com.example.week1.unit.delivery.address;
 
 import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.ReceiverInfoRepository;
+import com.example.week1.delivery.address.AddressRepository;
 import com.example.week1.delivery.address.AddressService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +23,9 @@ public class AddressServiceTest {
     @Mock
     private ReceiverInfoRepository receiverInfoRepository;
 
+    @Mock
+    private AddressRepository addressRepository;
+
     @Test
     void shouldLoadDefaultAddressOfAUser() {
         AddressService addressService = getAddressServiceWithMock();
@@ -39,6 +43,17 @@ public class AddressServiceTest {
         addressService.setMyDefaultAddress("MyUsername", getDummyAddress());
 
         verify(receiverInfoRepository).save(getDummyInfo());
+    }
+
+    @Test
+    void shouldGetAddressById() {
+        when(addressRepository.findById(5678)).thenReturn(Optional.of(getDummyAddress()));
+        AddressService addressService = new AddressService();
+        addressService.setAddressRepository(addressRepository);
+
+        Address address = addressService.getAddress(5678);
+
+        assertEquals(getDummyAddress(), address);
     }
 
     private AddressService getAddressServiceWithMock() {

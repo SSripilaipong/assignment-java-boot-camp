@@ -30,4 +30,7 @@ public class AddressService {
     public Address getAddress(Integer id) {
         return new Address();  // TODO: implement
     }
+
+    public void setAddressRepository(AddressRepository addressRepository) {
+    }
 }
