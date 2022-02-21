@@ -1,6 +1,7 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
+import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
@@ -64,5 +65,9 @@ public class Week1ApplicationRestApiDriver {
     public CartSummaryResponse summarizeCart() {
         return requester.getWithToken(
                 "/cart", userToken, CartSummaryResponse.class).getBody();
+    }
+
+    public AddressResponse getDefaultAddress() {
+        return new AddressResponse();  // TODO: implement this
     }
 }

@@ -1,5 +1,6 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.sales.cart.response.CartItemResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
@@ -78,6 +79,18 @@ class Week1ApplicationTests {
 		assertEquals(new CartItemResponse(2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00),
 				summary.getItems().get(1));
 		assertEquals(11097.00, summary.getTotalPrice());
+	}
+
+	@Test
+	void shouldBeAbleToLoadSavedDefaultAddress() {
+		loginWithDefaultUser();
+		AddressResponse address = dsl.loadDefaultAddress();
+		assertEquals("Santhapon Sripilaipong", address.getFullName());
+		assertEquals("Somewhere in Thailand", address.getAddress());
+		assertEquals("12345", address.getPostCode());
+		assertEquals("Somewhere", address.getDistrict());
+		assertEquals("Krung Thep Maha Nakhon (Bangkok)", address.getProvince());
+		assertEquals("0999999999", address.getPhone());
 	}
 
 	void loginWithDefaultUser() {

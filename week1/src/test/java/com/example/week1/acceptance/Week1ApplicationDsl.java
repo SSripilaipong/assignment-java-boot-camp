@@ -1,5 +1,6 @@
 package com.example.week1.acceptance;
 
+import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
@@ -53,5 +54,9 @@ public class Week1ApplicationDsl {
 
     public CartSummaryResponse summarizeCart() {
         return driver.summarizeCart();
+    }
+
+    public AddressResponse loadDefaultAddress() {
+        return driver.getDefaultAddress();
     }
 }
