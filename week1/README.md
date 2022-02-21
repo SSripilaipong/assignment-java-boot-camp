@@ -62,6 +62,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 | phone     | 0999999999                       |
 
 #### 7. ดำเนินการต่อด้วย default address นั้น
+[cURL script](#7-เลือกใช้ที่อยู่จัดส่ง-default-สำหรับตะกร้านี้)
 
 #### 8. ระบบ load ตัวเลือกการชำระเงิน default ขึ้นมาแสดง เป็นดังนี้
 
@@ -133,6 +134,16 @@ curl -X GET http://localhost:8080/cart \
 #### 6. load ที่อยู่จัดส่ง default มาแสดง
 [ดูรายละเอียด flow](#6-ระบบ-load-ที่อยู่ที่จะจัดส่ง-default-ขึ้นมาแสดง-เป็นดังนี้)
 ```shell
-curl -X GET http://localhost:8080/delivery/address/default \
--H 'Authorization: Bearer $AUTH_TOKEN'
+ADDRESS_ID=$(curl -X GET http://localhost:8080/delivery/address/default \
+  -H 'Authorization: Bearer '$AUTH_TOKEN \
+  | grep -Po 'id": *\K[^,]*')
+```
+
+#### 7. เลือกใช้ที่อยู่จัดส่ง default สำหรับตะกร้านี้
+[ดูรายละเอียด flow](#7-ดำเนินการต่อด้วย-default-address-นั้น)
+```shell
+curl -X PUT http://localhost:8080/cart/address \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer '$AUTH_TOKEN \
+  -d '{"addressId": '$ADDRESS_ID'}'
 ```
