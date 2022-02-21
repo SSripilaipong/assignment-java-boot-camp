@@ -1,7 +1,9 @@
 package com.example.week1.unit.sales.cart;
 
 import com.example.week1.TestRequester;
+import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.address.AddressService;
+import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartService;
 import com.example.week1.sales.cart.request.SelectCartAddressRequest;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
@@ -100,6 +102,18 @@ public class CartControllerTest {
 
         assert cartSummaryResponse != null;
         assertEquals(getTotalPriceOfDummyCartWithProductAAndB(), cartSummaryResponse.getTotalPrice());
+    }
+
+    @Test
+    void shouldReturnAddressWhenSummarizeCart() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+        when(addressService.getAddress(5678)).thenReturn(new Address("", "MyAddress", "", "", "", ""));
+        when(cartService.getMyCart("MyUsername")).thenReturn(new Cart("MyUsername", 5678));
+
+        CartSummaryResponse response = requester.getWithToken("/cart", "MyToken", CartSummaryResponse.class).getBody();
+
+        assert response != null;
+        assertEquals("MyAddress", response.getAddress());
     }
 
     @Test

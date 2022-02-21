@@ -26,4 +26,8 @@ public class AddressService {
     public boolean isMyAddress(String username, Integer addressId) {
         return false;
     }
+
+    public Address getAddress(Integer id) {
+        return new Address();  // TODO: implement
+    }
 }
