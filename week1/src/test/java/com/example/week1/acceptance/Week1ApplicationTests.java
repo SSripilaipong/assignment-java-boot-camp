@@ -93,6 +93,16 @@ class Week1ApplicationTests {
 		assertEquals("0999999999", address.getPhone());
 	}
 
+	@Test
+	void shouldSeeAddressWhenSummarizeCart() {
+		loginWithDefaultUser();
+		dsl.clearCart();
+		dsl.selectAddressToCart(dsl.loadDefaultAddress().getId());
+		CartSummaryResponse summary = dsl.summarizeCart();
+
+		assertEquals("Somewhere in Thailand", summary.getDeliveryAddress().getAddress());
+	}
+
 	void loginWithDefaultUser() {
 		dsl.userLogin(USERNAME, PASSWORD);
 	}

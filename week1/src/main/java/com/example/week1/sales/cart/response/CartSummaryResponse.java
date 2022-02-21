@@ -1,5 +1,6 @@
 package com.example.week1.sales.cart.response;
 
+import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartItem;
 import com.example.week1.sales.product.Product;
@@ -45,5 +46,9 @@ public class CartSummaryResponse {
 
     public void setItems(ArrayList<CartItemResponse> items) {
         this.items = items;
+    }
+
+    public AddressResponse getDeliveryAddress() {
+        return new AddressResponse();
     }
 }

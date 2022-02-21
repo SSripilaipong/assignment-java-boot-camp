@@ -71,4 +71,7 @@ public class Week1ApplicationRestApiDriver {
         return requester.getWithToken(
                 "/delivery/address/default", userToken, AddressResponse.class).getBody();
     }
+
+    public void setAddressIdOfMyCart(Integer id) {
+    }
 }

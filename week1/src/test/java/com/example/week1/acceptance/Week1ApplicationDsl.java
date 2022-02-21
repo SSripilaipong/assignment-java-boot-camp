@@ -59,4 +59,8 @@ public class Week1ApplicationDsl {
     public AddressResponse loadDefaultAddress() {
         return driver.getDefaultAddress();
     }
+
+    public void selectAddressToCart(Integer id) {
+        driver.setAddressIdOfMyCart(id);
+    }
 }
