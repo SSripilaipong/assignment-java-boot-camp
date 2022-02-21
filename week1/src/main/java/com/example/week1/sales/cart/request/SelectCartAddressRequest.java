@@ -1,4 +1,4 @@
-package com.example.week1.sales.cart;
+package com.example.week1.sales.cart.request;
 
 import com.example.week1.rest.JsonConvertible;
 import org.json.JSONException;

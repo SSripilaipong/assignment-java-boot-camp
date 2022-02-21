@@ -1,10 +1,9 @@
 package com.example.week1.unit.sales.cart;
 
 import com.example.week1.TestRequester;
-import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.address.AddressService;
 import com.example.week1.sales.cart.CartService;
-import com.example.week1.sales.cart.SelectCartAddressRequest;
+import com.example.week1.sales.cart.request.SelectCartAddressRequest;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.response.CartItemAddedResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
