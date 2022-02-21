@@ -24,4 +24,8 @@ public class AddressResponse {
     public String getPhone() {
         return null;
     }
+
+    public Address toAddress() {
+        return new Address();
+    }
 }
