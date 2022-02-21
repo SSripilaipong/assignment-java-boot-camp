@@ -94,7 +94,7 @@ class Week1ApplicationTests {
 	}
 
 	@Test
-	void shouldSeeAddressWhenSummarizeCart() {
+	void shouldBeAbleToSelectAddressToDeliverTheirCart() {
 		loginWithDefaultUser();
 		dsl.clearCart();
 		dsl.selectAddressToCart(dsl.loadDefaultAddress().getId());
