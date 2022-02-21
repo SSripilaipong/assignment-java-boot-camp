@@ -1,6 +1,5 @@
 package com.example.week1.unit.delivery.address;
 
-import com.example.week1.delivery.ReceiverInfo;
 import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.ReceiverInfoRepository;
 import com.example.week1.delivery.address.AddressService;
@@ -11,6 +10,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
+import static com.example.week1.unit.delivery.ReceiverInfoDummyFactory.getDummyAddress;
+import static com.example.week1.unit.delivery.ReceiverInfoDummyFactory.getDummyInfo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
@@ -24,12 +25,10 @@ public class AddressServiceTest {
     void shouldLoadDefaultAddressOfAUser() {
         AddressService addressService = new AddressService();
         addressService.setReceiverInfoRepository(receiverInfoRepository);
-        Address myAddress = new Address("Name", "Address", "12345", "District", "Province", "0123456789");
-        when(receiverInfoRepository.findById("MyUsername"))
-                .thenReturn(Optional.of(new ReceiverInfo("MyUsername", myAddress)));
+        when(receiverInfoRepository.findById("MyUsername")).thenReturn(Optional.of(getDummyInfo()));
 
         Address defaultAddress = addressService.getMyDefaultAddress("MyUsername");
 
-        assertEquals(myAddress, defaultAddress);
+        assertEquals(getDummyAddress(), defaultAddress);
     }
 }
