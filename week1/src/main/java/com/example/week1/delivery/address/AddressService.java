@@ -26,7 +26,4 @@ public class AddressService {
     public boolean isMyAddress(String username, Integer addressId) {
         return false;
     }
-
-    public void setMyCartAddressId(Integer addressId) {
-    }
 }

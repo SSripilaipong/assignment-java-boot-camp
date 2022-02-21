@@ -31,4 +31,6 @@ public class CartService {
         }
     }
 
+    public void setMyCartAddressId(Integer addressId) {
+    }
 }
