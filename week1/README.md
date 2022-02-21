@@ -6,9 +6,9 @@
 ## สรุป Flow
 flow นี้จะแสดงเฉพาะข้อมูลที่ user เห็นเท่านั้น โดยละ implementation detail อื่น ๆ เอาไว้
 
-####1. login ด้วย _username: `santhapon` password: `Admin1234`_
+#### 1. login ด้วย _username: `santhapon` password: `Admin1234`_
 
-####2. ค้นหา product ด้วย keyword: `NMD` ได้ผลลัพธ์ดังนี้
+#### 2. ค้นหา product ด้วย keyword: `NMD` ได้ผลลัพธ์ดังนี้
 
 | name                                | price    |
 |-------------------------------------|----------|
@@ -17,7 +17,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 | POCA SHOE NMD Sneakers Fashion      | 399.00   |
 | Adidas NMD R1 Color Core Black      | 7990.00  |
 
-####3. เลือกดู product `POCA SHOE NMD Sneakers Fashion` ได้ผลลัพธ์ดังนี้
+#### 3. เลือกดู product `POCA SHOE NMD Sneakers Fashion` ได้ผลลัพธ์ดังนี้
 
 | field       | value                                                           |
 |-------------|-----------------------------------------------------------------|
@@ -27,9 +27,9 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 | occasion    | Casual                                                          |
 | price       | 399.00                                                          |
 
-####4. เพิ่มลงในตะกร้า
+#### 4. เพิ่มลงในตะกร้า
 
-####5. เลือกชำระสินค้า ระบบแสดงข้อมูลสินค้าในตะกร้า ได้ผลลัพธ์ดังนี้
+#### 5. เลือกชำระสินค้า ระบบแสดงข้อมูลสินค้าในตะกร้า ได้ผลลัพธ์ดังนี้
 
 ```json
 {
@@ -44,7 +44,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 }
 ```
 
-####6. ระบบ load ที่อยู่ที่จะจัดส่ง default ขึ้นมาแสดง เป็นดังนี้
+#### 6. ระบบ load ที่อยู่ที่จะจัดส่ง default ขึ้นมาแสดง เป็นดังนี้
 
 | field     | value                            |
 |-----------|----------------------------------|
@@ -55,9 +55,9 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 | province  | Krung Thep Maha Nakhon (Bangkok) |
 | phone     | 0999999999                       |
 
-####7. ดำเนินการต่อด้วย default address นั้น
+#### 7. ดำเนินการต่อด้วย default address นั้น
 
-####8. ระบบ load ตัวเลือกการชำระเงิน default ขึ้นมาแสดง เป็นดังนี้
+#### 8. ระบบ load ตัวเลือกการชำระเงิน default ขึ้นมาแสดง เป็นดังนี้
 
 | field         | value                  |
 |---------------|------------------------|
@@ -67,9 +67,9 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 | expire        | 11/12                  |
 | cvv           | 999                    |
 
-####9. สั่งซื้อสินค้าด้วยตัวเลือกชำระเงิน default นั้น
+#### 9. สั่งซื้อสินค้าด้วยตัวเลือกชำระเงิน default นั้น
 
-####10. เรียกดูสรุปการสั่งซื้อ ได้ผลลัพธ์ดังนี้
+#### 10. เรียกดูสรุปการสั่งซื้อ ได้ผลลัพธ์ดังนี้
 
 ```json
 {
@@ -87,7 +87,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 ```
 
 ## cURL script สำหรับรัน demo
-####1. login เข้าระบบ และ store Authorization Token
+#### 1. login เข้าระบบ และ store Authorization Token
 ```shell
 AUTH_TOKEN=$(curl -X POST http://localhost:8080/login \
   -H 'Content-Type: application/json' \
@@ -95,17 +95,17 @@ AUTH_TOKEN=$(curl -X POST http://localhost:8080/login \
   | grep -Po 'Bearer \K[^"]*')
 ```
 
-####2. ค้นหา product ด้วย keyword
+#### 2. ค้นหา product ด้วย keyword
 ```shell
 curl -X GET http://localhost:8080/products?keyword=NMD
 ```
 
-####3. เลือกรายละเอียดของ product (id=2)
+#### 3. เลือกรายละเอียดของ product (id=2)
 ```shell
 curl -X GET http://localhost:8080/products/2
 ```
 
-####4. เพิ่ม product (id=2) ลงในตะกร้า 1 ชิ้น
+#### 4. เพิ่ม product (id=2) ลงในตะกร้า 1 ชิ้น
 ```shell
 curl -X POST http://localhost:8080/cart/items \
 -H 'Content-Type: application/json' \
@@ -113,7 +113,7 @@ curl -X POST http://localhost:8080/cart/items \
 -d '{"productId": 2, "quantity": 1}'
 ```
 
-####5. ดูสรุปสินค้าในตำกร้า
+#### 5. ดูสรุปสินค้าในตำกร้า
 ```shell
 curl -X GET http://localhost:8080/cart \
 -H 'Authorization: Bearer $AUTH_TOKEN'
