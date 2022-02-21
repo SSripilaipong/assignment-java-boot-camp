@@ -1,9 +1,16 @@
 package com.example.week1.delivery.address;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Address {
 
+    @Id
+    @GeneratedValue
+    private Integer id;
     private String fullName;
     private String address;
     private String postCode;
@@ -29,6 +36,14 @@ public class Address {
         if (o == null || getClass() != o.getClass()) return false;
         Address address1 = (Address) o;
         return Objects.equals(fullName, address1.fullName) && Objects.equals(address, address1.address) && Objects.equals(postCode, address1.postCode) && Objects.equals(district, address1.district) && Objects.equals(province, address1.province) && Objects.equals(phone, address1.phone);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFullName() {
