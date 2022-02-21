@@ -1,6 +1,6 @@
 package com.example.week1.sales.cart.response;
 
-import com.example.week1.delivery.address.AddressResponse;
+import com.example.week1.delivery.address.AddressService;
 import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartItem;
 import com.example.week1.sales.product.Product;
@@ -11,12 +11,14 @@ import java.util.ArrayList;
 public class CartSummaryResponse {
     private ArrayList<CartItemResponse> items;
     private Double totalPrice;
+    private String address;
 
     public CartSummaryResponse() {
         items = new ArrayList<>();
     }
 
-    public static CartSummaryResponse fromCart(ProductService productService, Cart cart) {
+    public static CartSummaryResponse fromCart(
+            AddressService addressService, ProductService productService, Cart cart) {
         CartSummaryResponse response = new CartSummaryResponse();
         double totalPrice = 0.0;
         for(CartItem item : cart.getItems()) {
@@ -25,6 +27,9 @@ public class CartSummaryResponse {
             totalPrice += product.getPrice() * item.getQuantity();
         }
         response.setTotalPrice(totalPrice);
+        if(cart.getAddressId() != null) {
+            response.setAddress(addressService.getAddress(cart.getAddressId()).getAddress());
+        }
         return response;
     }
 
@@ -48,7 +53,11 @@ public class CartSummaryResponse {
         this.items = items;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getAddress() {
-        return null;
+        return address;
     }
 }

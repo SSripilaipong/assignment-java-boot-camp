@@ -48,7 +48,7 @@ public class CartController {
     @GetMapping("/cart")
     public CartSummaryResponse summarizeCart(@RequestHeader("Authorization") String token) {
         return CartSummaryResponse.fromCart(
-                productService, cartService.getMyCart(tokenManager.decodeTokenToUsername(token)));
+                addressService, productService, cartService.getMyCart(tokenManager.decodeTokenToUsername(token)));
     }
 
     @DeleteMapping("/cart")
