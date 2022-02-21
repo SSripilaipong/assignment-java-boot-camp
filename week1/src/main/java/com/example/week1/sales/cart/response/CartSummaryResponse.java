@@ -48,7 +48,7 @@ public class CartSummaryResponse {
         this.items = items;
     }
 
-    public AddressResponse getDeliveryAddress() {
-        return new AddressResponse();
+    public String getAddress() {
+        return null;
     }
 }
