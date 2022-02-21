@@ -3,6 +3,7 @@ package com.example.week1.acceptance;
 import com.example.week1.TestRequester;
 import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
+import com.example.week1.sales.cart.request.SelectCartAddressRequest;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
@@ -73,5 +74,6 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public void setAddressIdOfMyCart(Integer id) {
+        requester.putWithToken("/cart/address", userToken, new SelectCartAddressRequest(id), Object.class);
     }
 }
