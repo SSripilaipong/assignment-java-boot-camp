@@ -20,5 +20,6 @@ public class AddressService {
     }
 
     public void setMyDefaultAddress(String username, Address address) {
+        receiverInfoRepository.save(new ReceiverInfo(username, address));
     }
 }

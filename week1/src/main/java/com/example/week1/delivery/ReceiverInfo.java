@@ -5,6 +5,7 @@ import com.example.week1.delivery.address.Address;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import java.util.Objects;
 
 @Entity
 public class ReceiverInfo {
@@ -19,6 +20,14 @@ public class ReceiverInfo {
     public ReceiverInfo(String username, Address address) {
         this.username = username;
         this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ReceiverInfo that = (ReceiverInfo) o;
+        return Objects.equals(username, that.username) && Objects.equals(address, that.address);
     }
 
     public String getUsername() {
