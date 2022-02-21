@@ -2,6 +2,7 @@ package com.example.week1.delivery;
 
 import com.example.week1.delivery.address.Address;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -11,7 +12,7 @@ import java.util.Objects;
 public class ReceiverInfo {
     @Id
     private String username;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     public ReceiverInfo() {
