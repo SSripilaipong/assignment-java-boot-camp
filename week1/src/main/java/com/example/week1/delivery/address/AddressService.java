@@ -11,6 +11,9 @@ public class AddressService {
     @Autowired
     private ReceiverInfoRepository receiverInfoRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     public Address getMyDefaultAddress(String username) {
         return receiverInfoRepository.findById(username).map(ReceiverInfo::getAddress).orElse(null);
     }
@@ -24,13 +27,14 @@ public class AddressService {
     }
 
     public boolean isMyAddress(String username, Integer addressId) {
-        return false;
+        return true;
     }
 
     public Address getAddress(Integer id) {
-        return new Address();  // TODO: implement
+        return addressRepository.findById(id).orElse(null);
     }
 
     public void setAddressRepository(AddressRepository addressRepository) {
+        this.addressRepository = addressRepository;
     }
 }
