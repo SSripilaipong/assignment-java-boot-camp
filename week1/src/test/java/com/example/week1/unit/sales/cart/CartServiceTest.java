@@ -51,6 +51,15 @@ public class CartServiceTest {
         verify(cartRepository).deleteById("MyUsername");
     }
 
+    @Test
+    void shouldSetMyCartAddressId() {
+        when(cartRepository.findById("MyUsername")).thenReturn(Optional.of(new Cart("MyUsername")));
+
+        getCartServiceWithMock().setMyCartAddressId("MyUsername", 1234);
+
+        verify(cartRepository).save(new Cart("MyUsername", 1234));
+    }
+
     private CartService getCartServiceWithMock() {
         CartService cartService = new CartService();
         cartService.setCartRepository(cartRepository);

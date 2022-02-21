@@ -22,6 +22,11 @@ public class Cart {
         items = new ArrayList<>();
     }
 
+    public Cart(String username, Integer addressId) {
+        this.username = username;
+        items = new ArrayList<>();
+    }
+
     public void addItem(CartItem item) {
         items.add(item);
     }
