@@ -22,4 +22,11 @@ public class AddressService {
     public void setMyDefaultAddress(String username, Address address) {
         receiverInfoRepository.save(new ReceiverInfo(username, address));
     }
+
+    public boolean isMyAddress(String username, Integer addressId) {
+        return false;
+    }
+
+    public void setMyCartAddressId(Integer addressId) {
+    }
 }

@@ -1,7 +1,10 @@
 package com.example.week1.unit.sales.cart;
 
 import com.example.week1.TestRequester;
+import com.example.week1.delivery.address.Address;
+import com.example.week1.delivery.address.AddressService;
 import com.example.week1.sales.cart.CartService;
+import com.example.week1.sales.cart.SelectCartAddressRequest;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.response.CartItemAddedResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
@@ -28,6 +31,9 @@ public class CartControllerTest {
 
     @MockBean
     ProductService productService;
+
+    @MockBean
+    AddressService addressService;
 
     @MockBean
     UserTokenManager tokenManager;
@@ -95,6 +101,17 @@ public class CartControllerTest {
 
         assert cartSummaryResponse != null;
         assertEquals(getTotalPriceOfDummyCartWithProductAAndB(), cartSummaryResponse.getTotalPrice());
+    }
+
+    @Test
+    void shouldSetAddressForCart() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+        when(addressService.isMyAddress("MyUsername", 1234)).thenReturn(true);
+
+        SelectCartAddressRequest request = new SelectCartAddressRequest(1234);
+        requester.putWithToken("/cart/address", "MyToken", request, Object.class);
+
+        verify(addressService).setMyCartAddressId(1234);
     }
 
     private CartSummaryResponse summarizeCartWithMock() {
