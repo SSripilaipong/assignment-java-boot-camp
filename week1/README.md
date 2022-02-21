@@ -120,7 +120,7 @@ curl -X GET http://localhost:8080/products/2
 ```shell
 curl -X POST http://localhost:8080/cart/items \
 -H 'Content-Type: application/json' \
--H 'Authorization: Bearer $AUTH_TOKEN' \
+-H 'Authorization: Bearer '$AUTH_TOKEN \
 -d '{"productId": 2, "quantity": 1}'
 ```
 
@@ -128,7 +128,7 @@ curl -X POST http://localhost:8080/cart/items \
 [ดูรายละเอียด flow](#5-เลือกชำระสินค้า-ระบบแสดงข้อมูลสินค้าในตะกร้า-ได้ผลลัพธ์ดังนี้)
 ```shell
 curl -X GET http://localhost:8080/cart \
--H 'Authorization: Bearer $AUTH_TOKEN'
+-H 'Authorization: Bearer '$AUTH_TOKEN
 ```
 
 #### 6. load ที่อยู่จัดส่ง default มาแสดง
