@@ -18,4 +18,7 @@ public class AddressService {
     public void setReceiverInfoRepository(ReceiverInfoRepository receiverInfoRepository) {
         this.receiverInfoRepository = receiverInfoRepository;
     }
+
+    public void setMyDefaultAddress(String username, Address address) {
+    }
 }

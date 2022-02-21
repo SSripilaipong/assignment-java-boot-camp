@@ -13,6 +13,7 @@ import java.util.Optional;
 import static com.example.week1.unit.delivery.ReceiverInfoDummyFactory.getDummyAddress;
 import static com.example.week1.unit.delivery.ReceiverInfoDummyFactory.getDummyInfo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,12 +24,26 @@ public class AddressServiceTest {
 
     @Test
     void shouldLoadDefaultAddressOfAUser() {
-        AddressService addressService = new AddressService();
-        addressService.setReceiverInfoRepository(receiverInfoRepository);
+        AddressService addressService = getAddressServiceWithMock();
         when(receiverInfoRepository.findById("MyUsername")).thenReturn(Optional.of(getDummyInfo()));
 
         Address defaultAddress = addressService.getMyDefaultAddress("MyUsername");
 
         assertEquals(getDummyAddress(), defaultAddress);
+    }
+
+    @Test
+    void shouldSetDefaultAddressOfAUser() {
+        AddressService addressService = getAddressServiceWithMock();
+
+        addressService.setMyDefaultAddress("MyUsername", getDummyAddress());
+
+        verify(receiverInfoRepository).save(getDummyInfo());
+    }
+
+    private AddressService getAddressServiceWithMock() {
+        AddressService addressService = new AddressService();
+        addressService.setReceiverInfoRepository(receiverInfoRepository);
+        return addressService;
     }
 }
