@@ -31,6 +31,6 @@ public class CartService {
         }
     }
 
-    public void setMyCartAddressId(Integer addressId) {
+    public void setMyCartAddressId(String username, Integer addressId) {
     }
 }

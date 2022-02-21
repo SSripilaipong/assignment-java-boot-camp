@@ -111,7 +111,7 @@ public class CartControllerTest {
         SelectCartAddressRequest request = new SelectCartAddressRequest(1234);
         requester.putWithToken("/cart/address", "MyToken", request, Object.class);
 
-        verify(cartService).setMyCartAddressId(1234);
+        verify(cartService).setMyCartAddressId("MyUsername", 1234);
     }
 
     private CartSummaryResponse summarizeCartWithMock() {
