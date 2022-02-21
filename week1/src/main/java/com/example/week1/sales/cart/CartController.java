@@ -1,5 +1,6 @@
 package com.example.week1.sales.cart;
 
+import com.example.week1.delivery.address.AddressService;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.response.CartItemAddedResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
@@ -22,6 +23,9 @@ public class CartController {
 
     @Autowired
     private UserTokenManager tokenManager;
+
+    @Autowired
+    private AddressService addressService;
 
     @PostMapping(
             value = "/cart/items",
@@ -49,6 +53,17 @@ public class CartController {
     @DeleteMapping("/cart")
     public void clearMyCart(@RequestHeader("Authorization") String token) {
         cartService.clearCart(tokenManager.decodeTokenToUsername(token));
+    }
+
+    @PutMapping("/cart/address")
+    public void setMyCartAddress(
+            @RequestHeader("Authorization") String token, @RequestBody SelectCartAddressRequest request) {
+        String username = tokenManager.decodeTokenToUsername(token);
+        if(addressService.isMyAddress(username, request.getAddressId())) {
+            cartService.setMyCartAddressId(username, request.getAddressId());
+        } else {
+            // do something
+        }
     }
 
 }
