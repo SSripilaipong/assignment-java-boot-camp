@@ -50,6 +50,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 ```
 
 #### 6. ระบบ load ที่อยู่ที่จะจัดส่ง default ขึ้นมาแสดง เป็นดังนี้
+[cURL script](#6-load-ที่อยู่จัดส่ง-default-มาแสดง)
 
 | field     | value                            |
 |-----------|----------------------------------|
@@ -126,5 +127,12 @@ curl -X POST http://localhost:8080/cart/items \
 [ดูรายละเอียด flow](#5-เลือกชำระสินค้า-ระบบแสดงข้อมูลสินค้าในตะกร้า-ได้ผลลัพธ์ดังนี้)
 ```shell
 curl -X GET http://localhost:8080/cart \
+-H 'Authorization: Bearer $AUTH_TOKEN'
+```
+
+#### 6. load ที่อยู่จัดส่ง default มาแสดง
+[ดูรายละเอียด flow](#6-ระบบ-load-ที่อยู่ที่จะจัดส่ง-default-ขึ้นมาแสดง-เป็นดังนี้)
+```shell
+curl -X GET http://localhost:8080/delivery/address/default \
 -H 'Authorization: Bearer $AUTH_TOKEN'
 ```
