@@ -2,6 +2,7 @@ package com.example.week1.acceptance;
 
 import com.example.week1.TestRequester;
 import com.example.week1.delivery.address.AddressResponse;
+import com.example.week1.payment.PaymentMethodResponse;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.request.SelectCartAddressRequest;
 import com.example.week1.sales.cart.response.CartItemsResponse;
@@ -75,5 +76,9 @@ public class Week1ApplicationRestApiDriver {
 
     public void setAddressIdOfMyCart(Integer id) {
         requester.putWithToken("/cart/address", userToken, new SelectCartAddressRequest(id), Object.class);
+    }
+
+    public PaymentMethodResponse getDefaultPaymentMethod() {
+        return new PaymentMethodResponse();  // TODO: implement this
     }
 }

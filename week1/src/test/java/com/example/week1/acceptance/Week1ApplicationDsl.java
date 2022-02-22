@@ -1,12 +1,16 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.delivery.address.AddressResponse;
+import com.example.week1.payment.PaymentMethodResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
 import com.example.week1.sales.product.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @Component
 public class Week1ApplicationDsl {
@@ -62,5 +66,20 @@ public class Week1ApplicationDsl {
 
     public void selectAddressToCart(Integer id) {
         driver.setAddressIdOfMyCart(id);
+    }
+
+    public PaymentMethodResponse loadDefaultPaymentMethod() {
+        return driver.getDefaultPaymentMethod();
+    }
+
+    public void confirmPaymentMethod(
+            PaymentMethodResponse paymentMethod, String method, String ownerName, String cardNumber,
+            String expire, String cvv) {
+        assertNotEquals(paymentMethod, null);
+        assertEquals(paymentMethod.getMethod(), method);
+        assertEquals(paymentMethod.getOwnerName(), ownerName);
+        assertEquals(paymentMethod.getCardNumber(), cardNumber);
+        assertEquals(paymentMethod.getExpire(), expire);
+        assertEquals(paymentMethod.getCvv(), cvv);
     }
 }

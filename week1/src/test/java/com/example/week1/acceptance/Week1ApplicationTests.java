@@ -1,6 +1,7 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.delivery.address.AddressResponse;
+import com.example.week1.payment.PaymentMethodResponse;
 import com.example.week1.sales.cart.response.CartItemResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
@@ -101,6 +102,14 @@ class Week1ApplicationTests {
 		CartSummaryResponse summary = dsl.summarizeCart();
 
 		assertEquals("Somewhere in Thailand", summary.getAddress());
+	}
+
+	@Test
+	void shouldBeAbleToLoadSavedDefaultPaymentMethod() {
+		loginWithDefaultUser();
+		PaymentMethodResponse paymentMethod = dsl.loadDefaultPaymentMethod();
+		dsl.confirmPaymentMethod(paymentMethod, "creditCard", "Santhapon Sripilaipong",
+				"1111222233334444", "11/12", "999");
 	}
 
 	void loginWithDefaultUser() {
