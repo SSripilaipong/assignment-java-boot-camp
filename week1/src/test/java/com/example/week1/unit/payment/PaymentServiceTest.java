@@ -13,6 +13,7 @@ import java.util.Optional;
 import static com.example.week1.unit.payment.PaymentDummyFactory.getDummyDefaultPaymentMethod;
 import static com.example.week1.unit.payment.PaymentDummyFactory.getDummyPaymentMethod;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -30,6 +31,15 @@ public class PaymentServiceTest {
         PaymentMethod paymentMethod = paymentService.getMyDefaultPaymentMethod("MyUsername");
 
         assertEquals(getDummyPaymentMethod(), paymentMethod);
+    }
+
+    @Test
+    void shouldSetDefaultPaymentMethodOfAUser() {
+        PaymentService paymentService = getPaymentServiceWithMock();
+
+        paymentService.setMyDefaultPaymentMethod("MyUsername", getDummyPaymentMethod());
+
+        verify(defaultPaymentMethodRepository).save(getDummyDefaultPaymentMethod());
     }
 
     private PaymentService getPaymentServiceWithMock() {

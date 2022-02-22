@@ -17,4 +17,8 @@ public class PaymentService {
     public void setDefaultPaymentMethodRepository(DefaultPaymentMethodRepository defaultPaymentMethodRepository) {
         this.defaultPaymentMethodRepository = defaultPaymentMethodRepository;
     }
+
+    public void setMyDefaultPaymentMethod(String username, PaymentMethod paymentMethod) {
+        // TODO: implement
+    }
 }
