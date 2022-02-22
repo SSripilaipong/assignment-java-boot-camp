@@ -5,6 +5,7 @@ import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.payment.response.PaymentMethodResponse;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.request.SelectCartAddressRequest;
+import com.example.week1.sales.cart.request.SelectCartPaymentMethodRequest;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
@@ -83,7 +84,7 @@ public class Week1ApplicationRestApiDriver {
                 "/payment/method/default", userToken, PaymentMethodResponse.class).getBody();
     }
 
-    public void setPaymentMethodIdOfMyCart(int paymentMethodId) {
-        // TODO: implement
+    public void setPaymentMethodIdOfMyCart(int id) {
+        requester.putWithToken("/cart/paymentMethod", userToken, new SelectCartPaymentMethodRequest(id), Object.class);
     }
 }
