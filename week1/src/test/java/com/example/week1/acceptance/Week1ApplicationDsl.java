@@ -22,9 +22,9 @@ public class Week1ApplicationDsl {
         driver.loginWithUsernameAndPassword(username, password);
     }
 
-    public boolean confirmUserLogin(String username) {
+    public void confirmUserLogin(String username) {
         String currentUsername = driver.getCurrentUsername();
-        return username.equals(currentUsername);
+        assertEquals(username, currentUsername);
     }
 
     public Products searchForProductsWithKeyword(String keyword) {

@@ -26,7 +26,7 @@ class Week1ApplicationTests {
 	@Test
 	void shouldBeAbleToLogin() {
 		loginWithDefaultUser();
-		assertTrue(dsl.confirmUserLogin(USERNAME));
+		dsl.confirmUserLogin(USERNAME);
 	}
 
 	@Test
