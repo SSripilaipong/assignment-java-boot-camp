@@ -79,6 +79,7 @@ public class Week1ApplicationRestApiDriver {
     }
 
     public PaymentMethodResponse getDefaultPaymentMethod() {
-        return new PaymentMethodResponse();  // TODO: implement this
+        return requester.getWithToken(
+                "/payment/method/default", userToken, PaymentMethodResponse.class).getBody();
     }
 }
