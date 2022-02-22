@@ -21,4 +21,9 @@ public class PaymentService {
     public void setMyDefaultPaymentMethod(String username, PaymentMethod paymentMethod) {
         defaultPaymentMethodRepository.save(new DefaultPaymentMethod(username, paymentMethod));
     }
+
+    public boolean isMyPaymentMethod(String username, int paymentMethodId) {
+        return false;  // TODO: implement
+    }
+
 }

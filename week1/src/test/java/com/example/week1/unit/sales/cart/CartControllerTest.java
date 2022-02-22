@@ -3,10 +3,12 @@ package com.example.week1.unit.sales.cart;
 import com.example.week1.TestRequester;
 import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.address.AddressService;
+import com.example.week1.payment.PaymentService;
 import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartService;
 import com.example.week1.sales.cart.request.SelectCartAddressRequest;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
+import com.example.week1.sales.cart.request.SelectCartPaymentMethodRequest;
 import com.example.week1.sales.cart.response.CartItemAddedResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
@@ -35,6 +37,9 @@ public class CartControllerTest {
 
     @MockBean
     AddressService addressService;
+
+    @MockBean
+    PaymentService paymentService;
 
     @MockBean
     UserTokenManager tokenManager;
@@ -125,6 +130,17 @@ public class CartControllerTest {
         requester.putWithToken("/cart/address", "MyToken", request, Object.class);
 
         verify(cartService).setMyCartAddressId("MyUsername", 1234);
+    }
+
+    @Test
+    void shouldSetPaymentMethodForCart() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+        when(paymentService.isMyPaymentMethod("MyUsername", 1234)).thenReturn(true);
+
+        SelectCartPaymentMethodRequest request = new SelectCartPaymentMethodRequest(1234);
+        requester.putWithToken("/cart/paymentMethod", "MyToken", request, Object.class);
+
+        verify(cartService).setMyCartPaymentMethodId("MyUsername", 1234);
     }
 
     private CartSummaryResponse summarizeCartWithMock() {

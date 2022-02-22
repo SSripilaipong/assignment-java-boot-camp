@@ -40,4 +40,9 @@ public class CartService {
         cart.setAddressId(addressId);
         cartRepository.save(cart);
     }
+
+    public void setMyCartPaymentMethodId(String username, int paymentMethodId) {
+        // TODO: implement
+    }
+
 }
