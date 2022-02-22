@@ -97,6 +97,8 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 ```
 
 ## cURL script สำหรับรัน demo
+มี shell script คำสั่งทั้งหมด ให้สามารถรันได้สะดวก อยู่ใน [/script/curl.sh](/script/curl.sh)
+
 #### 1. login เข้าระบบ และ store Authorization Token
 [ดูรายละเอียด flow](#1-login-ด้วย-username-santhapon-password-admin1234)
 ```shell
