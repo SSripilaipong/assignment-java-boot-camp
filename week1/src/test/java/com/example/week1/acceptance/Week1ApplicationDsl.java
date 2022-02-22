@@ -116,4 +116,15 @@ public class Week1ApplicationDsl {
     public void confirmTotalPriceOfCartSummary(CartSummaryResponse summary, double totalPrice) {
         assertEquals(totalPrice, summary.getTotalPrice());
     }
+
+    public void confirmAddress(AddressResponse address, String fullName, String addressText, String postCode,
+                               String district, String province, String phone) {
+        assertEquals(fullName, address.getFullName());
+        assertEquals(addressText, address.getAddress());
+        assertEquals(postCode, address.getPostCode());
+        assertEquals(district, address.getDistrict());
+        assertEquals(province, address.getProvince());
+        assertEquals(phone, address.getPhone());
+    }
+
 }

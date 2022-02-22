@@ -80,12 +80,9 @@ class Week1ApplicationTests {
 	void shouldBeAbleToLoadSavedDefaultAddress() {
 		loginWithDefaultUser();
 		AddressResponse address = dsl.loadDefaultAddress();
-		assertEquals("Santhapon Sripilaipong", address.getFullName());
-		assertEquals("Somewhere in Thailand", address.getAddress());
-		assertEquals("12345", address.getPostCode());
-		assertEquals("Somewhere", address.getDistrict());
-		assertEquals("Krung Thep Maha Nakhon (Bangkok)", address.getProvince());
-		assertEquals("0999999999", address.getPhone());
+		dsl.confirmAddress(address, "Santhapon Sripilaipong", "Somewhere in Thailand",
+				"12345", "Somewhere", "Krung Thep Maha Nakhon (Bangkok)",
+				"0999999999");
 	}
 
 	@Test
