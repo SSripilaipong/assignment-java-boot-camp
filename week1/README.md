@@ -2,6 +2,7 @@
 
 - [สรุป Flow](#สรุป-flow)
 - [cURL script สำหรับรัน demo](#cURL-script-สำหรับรัน-demo)
+- [การ run application](#การ-run-application)
 
 ## สรุป Flow
 flow นี้จะแสดงเฉพาะข้อมูลที่ user เห็นเท่านั้น โดยละ implementation detail อื่น ๆ เอาไว้
@@ -97,7 +98,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 ```
 
 ## cURL script สำหรับรัน demo
-มี shell script คำสั่งทั้งหมด ให้สามารถรันได้สะดวก อยู่ใน [/script/curl.sh](/script/curl.sh)
+มี shell script คำสั่งทั้งหมด ให้สามารถรันได้สะดวก อยู่ใน [/week1/script/curl.sh](/week1/script/curl.sh)
 
 #### 1. login เข้าระบบ และ store Authorization Token
 [ดูรายละเอียด flow](#1-login-ด้วย-username-santhapon-password-admin1234)
@@ -175,4 +176,13 @@ curl -X PUT http://localhost:8080/cart/paymentMethod \
 ```shell
 curl -X GET http://localhost:8080/cart \
   -H 'Authorization: Bearer '$AUTH_TOKEN
+```
+
+#### การ run application
+```shell
+mvnw clean
+mvnw compile
+mvnw test
+mvnw package
+mvnw spring-boot:run
 ```
