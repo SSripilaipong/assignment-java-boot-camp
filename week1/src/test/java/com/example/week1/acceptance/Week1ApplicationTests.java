@@ -59,7 +59,7 @@ class Week1ApplicationTests {
 		dsl.clearCart();
 		dsl.addItemToCart(2, 1);
 		dsl.clearCart();
-		assertEquals(0, dsl.getCartItems().size());
+		dsl.confirmCartIsEmpty();
 	}
 
 	@Test

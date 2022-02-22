@@ -97,4 +97,8 @@ public class Week1ApplicationDsl {
         assertEquals(quantity, item.getQuantity());
         assertEquals(pricePerUnit, item.getPricePerUnit());
     }
+
+    public void confirmCartIsEmpty() {
+        assertEquals(0, getCartItems().size());
+    }
 }
