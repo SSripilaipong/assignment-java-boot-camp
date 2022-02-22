@@ -5,7 +5,7 @@ public class PaymentMethodResponse {
     public PaymentMethodResponse() {
     }
 
-    public PaymentMethodResponse(String method, String ownerName, String cardNumber, String expire, String cvv) {
+    public PaymentMethodResponse(Integer id, String method, String ownerName, String cardNumber, String expire, String cvv) {
     }
 
     public String getMethod() {

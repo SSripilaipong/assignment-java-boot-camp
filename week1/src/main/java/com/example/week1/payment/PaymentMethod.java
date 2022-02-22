@@ -4,6 +4,6 @@ public class PaymentMethod {
     public PaymentMethod() {
     }
 
-    public PaymentMethod(String method, String ownerName, String cardNumber, String expire, String cvv) {
+    public PaymentMethod(Integer id, String method, String ownerName, String cardNumber, String expire, String cvv) {
     }
 }
