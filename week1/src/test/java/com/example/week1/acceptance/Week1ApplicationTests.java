@@ -1,7 +1,7 @@
 package com.example.week1.acceptance;
 
 import com.example.week1.delivery.address.AddressResponse;
-import com.example.week1.payment.PaymentMethodResponse;
+import com.example.week1.payment.response.PaymentMethodResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
