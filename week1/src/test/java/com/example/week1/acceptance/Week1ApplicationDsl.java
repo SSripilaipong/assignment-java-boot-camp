@@ -108,4 +108,8 @@ public class Week1ApplicationDsl {
             CartSummaryResponse summary, int productId, String productName, int quantity, double pricePerUnit) {
         assertThat(summary.getItems(), hasItem(new CartItemResponse(productId, productName, quantity, pricePerUnit)));
     }
+
+    public void confirmNumberOfCartItemInCartSummary(CartSummaryResponse summary, int size) {
+        assertEquals(size, summary.getItems().size());
+    }
 }
