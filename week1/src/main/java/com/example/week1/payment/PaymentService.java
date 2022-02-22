@@ -26,4 +26,12 @@ public class PaymentService {
         return false;  // TODO: implement
     }
 
+    public PaymentMethod getPaymentMethod(int paymentMethodId) {
+        return null; // TODO: implement
+    }
+
+    public void setPaymentMethodRepository(PaymentMethodRepository paymentMethodRepository) {
+        // TODO: implement
+    }
+
 }

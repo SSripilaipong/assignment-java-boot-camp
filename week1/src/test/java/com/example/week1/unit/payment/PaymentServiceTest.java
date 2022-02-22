@@ -2,6 +2,7 @@ package com.example.week1.unit.payment;
 
 import com.example.week1.payment.DefaultPaymentMethodRepository;
 import com.example.week1.payment.PaymentMethod;
+import com.example.week1.payment.PaymentMethodRepository;
 import com.example.week1.payment.PaymentService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,6 +22,9 @@ public class PaymentServiceTest {
 
     @Mock
     private DefaultPaymentMethodRepository defaultPaymentMethodRepository;
+
+    @Mock
+    private PaymentMethodRepository paymentMethodRepository;
 
     @Test
     void shouldLoadDefaultPaymentMethodOfAUser() {
@@ -42,9 +46,20 @@ public class PaymentServiceTest {
         verify(defaultPaymentMethodRepository).save(getDummyDefaultPaymentMethod());
     }
 
+    @Test
+    void shouldGetPaymentMethodFromId() {
+        PaymentService paymentService = getPaymentServiceWithMock();
+        when(paymentMethodRepository.findById(1234)).thenReturn(Optional.of(getDummyPaymentMethod()));
+
+        PaymentMethod paymentMethod = paymentService.getPaymentMethod(1234);
+
+        assertEquals(getDummyPaymentMethod(), paymentMethod);
+    }
+
     private PaymentService getPaymentServiceWithMock() {
         PaymentService paymentService = new PaymentService();
         paymentService.setDefaultPaymentMethodRepository(defaultPaymentMethodRepository);
+        paymentService.setPaymentMethodRepository(paymentMethodRepository);
         return paymentService;
     }
 }
