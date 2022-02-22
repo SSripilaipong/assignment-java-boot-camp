@@ -63,7 +63,7 @@ class Week1ApplicationTests {
 	}
 
 	@Test
-	void shouldBeAbleToSummarizeCart() {
+	void shouldBeAbleToSummarizeCartItemsAndPrice() {
 		loginWithDefaultUser();
 		dsl.clearCart();
 		dsl.addItemToCart(0, 1);
