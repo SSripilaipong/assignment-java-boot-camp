@@ -1,8 +1,10 @@
 package com.example.week1.sales.cart;
 
 import com.example.week1.delivery.address.AddressService;
+import com.example.week1.payment.PaymentService;
 import com.example.week1.sales.cart.request.CartItemAddingRequest;
 import com.example.week1.sales.cart.request.SelectCartAddressRequest;
+import com.example.week1.sales.cart.request.SelectCartPaymentMethodRequest;
 import com.example.week1.sales.cart.response.CartItemAddedResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
@@ -27,6 +29,9 @@ public class CartController {
 
     @Autowired
     private AddressService addressService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @PostMapping(
             value = "/cart/items",
@@ -60,8 +65,19 @@ public class CartController {
     public void setMyCartAddress(
             @RequestHeader("Authorization") String token, @RequestBody SelectCartAddressRequest request) {
         String username = tokenManager.decodeTokenToUsername(token);
-        if(addressService.isMyAddress(username, request.getAddressId())) {
+        if (addressService.isMyAddress(username, request.getAddressId())) {
             cartService.setMyCartAddressId(username, request.getAddressId());
+        } else {
+            // do something
+        }
+    }
+
+    @PutMapping("/cart/paymentMethod")
+    public void setMyCartPaymentMethod(
+            @RequestHeader("Authorization") String token, @RequestBody SelectCartPaymentMethodRequest request) {
+        String username = tokenManager.decodeTokenToUsername(token);
+        if (paymentService.isMyPaymentMethod(username, request.getPaymentMethodId())) {
+            cartService.setMyCartPaymentMethodId(username, request.getPaymentMethodId());
         } else {
             // do something
         }
