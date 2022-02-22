@@ -2,6 +2,8 @@ package com.example.week1;
 
 import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.address.AddressService;
+import com.example.week1.payment.PaymentMethod;
+import com.example.week1.payment.PaymentService;
 import com.example.week1.sales.product.Product;
 import com.example.week1.sales.product.ProductService;
 import com.example.week1.user.UserService;
@@ -23,6 +25,9 @@ public class Week1Application {
 	@Autowired
 	private AddressService addressService;
 
+	@Autowired
+	private PaymentService paymentService;
+
 	@PostConstruct
 	public void createInitialUser() {
 		userService.register("Santhapon", "Admin1234");
@@ -43,6 +48,13 @@ public class Week1Application {
 				"12345", "Somewhere", "Krung Thep Maha Nakhon (Bangkok)",
 				"0999999999");
 		addressService.setMyDefaultAddress("Santhapon", address);
+	}
+
+	@PostConstruct
+	public void setInitialDefaultPaymentMethod() {
+		PaymentMethod paymentMethod = new PaymentMethod(1, "creditCard", "Santhapon Sripilaipong",
+				"1111222233334444", "11/12", "999");
+		paymentService.setMyDefaultPaymentMethod("Santhapon", paymentMethod);
 	}
 
 	public static void main(String[] args) {
