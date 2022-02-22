@@ -65,6 +65,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 [cURL script](#7-เลือกใช้ที่อยู่จัดส่ง-default-สำหรับตะกร้านี้)
 
 #### 8. ระบบ load ตัวเลือกการชำระเงิน default ขึ้นมาแสดง เป็นดังนี้
+[cURL script](#8-load-ตัวเลือกการชำระเงิน-default-ขึ้นมาแสดง)
 
 | field         | value                  |
 |---------------|------------------------|
@@ -146,4 +147,12 @@ curl -X PUT http://localhost:8080/cart/address \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer '$AUTH_TOKEN \
   -d '{"addressId": '$ADDRESS_ID'}'
+```
+
+#### 8. load ตัวเลือกการชำระเงิน default ขึ้นมาแสดง และ store Payment ID
+[ดูรายละเอียด flow](#8-ระบบ-load-ตัวเลือกการชำระเงิน-default-ขึ้นมาแสดง-เป็นดังนี้)
+```shell
+PAYMENT_ID=$(curl -X GET http://localhost:8080/payment/method/default \
+  -H 'Authorization: Bearer '$AUTH_TOKEN \
+  | grep -Po 'id": *\K[^,]*')
 ```
