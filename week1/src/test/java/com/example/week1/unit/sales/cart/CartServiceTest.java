@@ -57,7 +57,16 @@ public class CartServiceTest {
 
         getCartServiceWithMock().setMyCartAddressId("MyUsername", 1234);
 
-        verify(cartRepository).save(new Cart("MyUsername", 1234));
+        verify(cartRepository).save(new Cart("MyUsername", 1234, null));
+    }
+
+    @Test
+    void shouldSetMyCartPaymentMethodId() {
+        when(cartRepository.findById("MyUsername")).thenReturn(Optional.of(new Cart("MyUsername")));
+
+        getCartServiceWithMock().setMyCartPaymentMethodId("MyUsername", 1234);
+
+        verify(cartRepository).save(new Cart("MyUsername", null, 1234));
     }
 
     private CartService getCartServiceWithMock() {

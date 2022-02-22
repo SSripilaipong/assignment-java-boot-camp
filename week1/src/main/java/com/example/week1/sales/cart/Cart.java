@@ -23,7 +23,7 @@ public class Cart {
         items = new ArrayList<>();
     }
 
-    public Cart(String username, Integer addressId) {
+    public Cart(String username, Integer addressId, Integer paymentMethodId) {  // TODO: implement
         this.username = username;
         this.addressId = addressId;
         items = new ArrayList<>();

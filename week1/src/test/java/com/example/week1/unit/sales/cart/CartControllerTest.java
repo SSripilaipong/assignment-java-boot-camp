@@ -113,7 +113,7 @@ public class CartControllerTest {
     void shouldReturnAddressWhenSummarizeCart() {
         when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
         when(addressService.getAddress(5678)).thenReturn(new Address("", "MyAddress", "", "", "", ""));
-        when(cartService.getMyCart("MyUsername")).thenReturn(new Cart("MyUsername", 5678));
+        when(cartService.getMyCart("MyUsername")).thenReturn(new Cart("MyUsername", 5678, null));
 
         CartSummaryResponse response = requester.getWithToken("/cart", "MyToken", CartSummaryResponse.class).getBody();
 
