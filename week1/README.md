@@ -178,7 +178,7 @@ curl -X GET http://localhost:8080/cart \
   -H 'Authorization: Bearer '$AUTH_TOKEN
 ```
 
-#### การ run application
+## การ run application
 ```shell
 mvnw clean
 mvnw compile
