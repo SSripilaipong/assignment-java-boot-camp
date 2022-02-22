@@ -22,7 +22,7 @@ public class PaymentServiceTest {
     private DefaultPaymentMethodRepository defaultPaymentMethodRepository;
 
     @Test
-    void shouldLoadDefaultAddressOfAUser() {
+    void shouldLoadDefaultPaymentMethodOfAUser() {
         PaymentService paymentService = getPaymentServiceWithMock();
         when(defaultPaymentMethodRepository.findById("MyUsername"))
                 .thenReturn(Optional.of(getDummyDefaultPaymentMethod()));
