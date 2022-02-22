@@ -9,8 +9,7 @@ import com.example.week1.sales.product.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Component
 public class Week1ApplicationDsl {
@@ -31,13 +30,10 @@ public class Week1ApplicationDsl {
         return driver.searchForProductWithKeyword(keyword);
     }
 
-    public boolean confirmAllProductNamesContainKeyword(Products products, String keyword) {
+    public void confirmAllProductNamesContainKeyword(Products products, String keyword) {
         for(Product product: products) {
-            if(!product.getName().contains(keyword)) {
-                return false;
-            }
+            assertTrue(product.getName().contains(keyword));
         }
-        return true;
     }
 
     public Product getProductDetail(int id) {

@@ -33,7 +33,7 @@ class Week1ApplicationTests {
 	void shouldBeAbleToSearchForProductsWithKeyword() {
 		Products products = dsl.searchForProductsWithKeyword("NMD");
 		assertEquals(4, products.size());
-		assertTrue(dsl.confirmAllProductNamesContainKeyword(products, "NMD"));
+		dsl.confirmAllProductNamesContainKeyword(products, "NMD");
 	}
 
 	@Test
