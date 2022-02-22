@@ -19,6 +19,6 @@ public class PaymentService {
     }
 
     public void setMyDefaultPaymentMethod(String username, PaymentMethod paymentMethod) {
-        // TODO: implement
+        defaultPaymentMethodRepository.save(new DefaultPaymentMethod(username, paymentMethod));
     }
 }
