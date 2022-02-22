@@ -34,7 +34,7 @@ public class PaymentServiceTest {
 
     private PaymentService getPaymentServiceWithMock() {
         PaymentService paymentService = new PaymentService();
-        paymentService.setPaymentMethodRepository(defaultPaymentMethodRepository);
+        paymentService.setDefaultPaymentMethodRepository(defaultPaymentMethodRepository);
         return paymentService;
     }
 }
