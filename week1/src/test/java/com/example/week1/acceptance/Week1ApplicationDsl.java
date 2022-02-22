@@ -2,6 +2,7 @@ package com.example.week1.acceptance;
 
 import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.payment.PaymentMethodResponse;
+import com.example.week1.sales.cart.response.CartItemResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
@@ -89,5 +90,11 @@ public class Week1ApplicationDsl {
         assertEquals(brand, product.getBrand());
         assertEquals(occasion, product.getOccasion());
         assertEquals(price, product.getPrice());
+    }
+
+    public void confirmCartItemDetail(CartItemResponse item, String productName, int quantity, double pricePerUnit) {
+        assertEquals(productName, item.getProductName());
+        assertEquals(quantity, item.getQuantity());
+        assertEquals(pricePerUnit, item.getPricePerUnit());
     }
 }

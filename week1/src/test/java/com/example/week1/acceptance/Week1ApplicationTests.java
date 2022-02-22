@@ -49,9 +49,8 @@ class Week1ApplicationTests {
 		dsl.clearCart();
 		dsl.addItemToCart(2, 1);
 		CartItemsResponse items = dsl.getCartItems();
-		assertEquals("POCA SHOE NMD Sneakers Fashion", items.get(0).getProductName());
-		assertEquals(1, items.get(0).getQuantity());
-		assertEquals(399.0, items.get(0).getPricePerUnit());
+		dsl.confirmCartItemDetail(items.get(0),
+				"POCA SHOE NMD Sneakers Fashion", 1, 399.0);
 	}
 
 	@Test
