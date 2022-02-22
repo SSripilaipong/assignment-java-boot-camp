@@ -41,8 +41,11 @@ public class CartService {
         cartRepository.save(cart);
     }
 
+    @Transactional
     public void setMyCartPaymentMethodId(String username, int paymentMethodId) {
-        // TODO: implement
+        Cart cart = getMyCart(username);
+        cart.setPaymentMethodId(paymentMethodId);
+        cartRepository.save(cart);
     }
 
 }

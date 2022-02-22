@@ -13,6 +13,7 @@ public class Cart {
     @Lob
     private ArrayList<CartItem> items;
     private Integer addressId;
+    private Integer paymentMethodId;
 
     public Cart() {
         items = new ArrayList<>();
@@ -23,9 +24,10 @@ public class Cart {
         items = new ArrayList<>();
     }
 
-    public Cart(String username, Integer addressId, Integer paymentMethodId) {  // TODO: implement
+    public Cart(String username, Integer addressId, Integer paymentMethodId) {
         this.username = username;
         this.addressId = addressId;
+        this.paymentMethodId = paymentMethodId;
         items = new ArrayList<>();
     }
 
@@ -64,4 +66,13 @@ public class Cart {
     public void setAddressId(Integer addressId) {
         this.addressId = addressId;
     }
+
+    public Integer getPaymentMethodId() {
+        return paymentMethodId;
+    }
+
+    public void setPaymentMethodId(Integer paymentMethodId) {
+        this.paymentMethodId = paymentMethodId;
+    }
+
 }
