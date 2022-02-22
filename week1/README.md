@@ -76,6 +76,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 | cvv           | 999                    |
 
 #### 9. สั่งซื้อสินค้าด้วยตัวเลือกชำระเงิน default นั้น
+[cURL script](#9-เลือกใช้ตัวเลือกการชำระเงิน-default-สำหรับตะกร้านี้)
 
 #### 10. เรียกดูสรุปการสั่งซื้อ ได้ผลลัพธ์ดังนี้
 
@@ -155,4 +156,12 @@ curl -X PUT http://localhost:8080/cart/address \
 PAYMENT_ID=$(curl -X GET http://localhost:8080/payment/method/default \
   -H 'Authorization: Bearer '$AUTH_TOKEN \
   | grep -Po 'id": *\K[^,]*')
+```
+
+#### 9. เลือกใช้ตัวเลือกการชำระเงิน default สำหรับตะกร้านี้
+[ดูรายละเอียด flow](#9-สั่งซื้อสินค้าด้วยตัวเลือกชำระเงิน-default-นั้น)
+```shell
+curl -X PUT http://localhost:8080/cart/paymentMethod \
+  -H 'Authorization: Bearer '$AUTH_TOKEN \
+  -d '{"paymentMethodId": '$PAYMENT_ID'}'
 ```
