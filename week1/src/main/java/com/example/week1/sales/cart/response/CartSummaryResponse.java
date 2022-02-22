@@ -60,4 +60,9 @@ public class CartSummaryResponse {
     public String getAddress() {
         return address;
     }
+
+    public String getCardNumber() {
+        return null;  // TODO: implement
+    }
+
 }

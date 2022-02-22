@@ -82,4 +82,8 @@ public class Week1ApplicationRestApiDriver {
         return requester.getWithToken(
                 "/payment/method/default", userToken, PaymentMethodResponse.class).getBody();
     }
+
+    public void setPaymentMethodIdOfMyCart(int paymentMethodId) {
+        // TODO: implement
+    }
 }

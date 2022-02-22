@@ -130,4 +130,13 @@ public class Week1ApplicationDsl {
     public void confirmAddressInCartSummary(CartSummaryResponse summary, String address) {
         assertEquals(address, summary.getAddress());
     }
+
+    public void selectPaymentMethodForCart(int paymentMethodId) {
+        driver.setPaymentMethodIdOfMyCart(paymentMethodId);
+    }
+
+    public void confirmPaymentCardNumberInCartSummary(CartSummaryResponse summary, String cardNumber) {
+        assertEquals(cardNumber, summary.getCardNumber());
+    }
+
 }

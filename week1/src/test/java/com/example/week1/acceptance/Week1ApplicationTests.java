@@ -99,6 +99,15 @@ class Week1ApplicationTests {
 				"1111222233334444", "11/12", "999");
 	}
 
+	@Test
+	void shouldBeAbleToSelectPaymentMethodForTheirCart() {
+		loginWithDefaultUser();
+		dsl.selectPaymentMethodForCart(1);
+		CartSummaryResponse summary = dsl.summarizeCart();
+
+		dsl.confirmPaymentCardNumberInCartSummary(summary, "1111222233334444");
+	}
+
 	void loginWithDefaultUser() {
 		dsl.userLogin(USERNAME, PASSWORD);
 	}
