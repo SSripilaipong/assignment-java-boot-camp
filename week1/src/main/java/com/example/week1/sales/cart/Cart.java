@@ -40,7 +40,7 @@ public class Cart {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
-        return Objects.equals(addressId, cart.addressId) && Objects.equals(username, cart.username) && Objects.equals(items, cart.items);
+        return Objects.equals(paymentMethodId, cart.paymentMethodId) && Objects.equals(addressId, cart.addressId) && Objects.equals(username, cart.username) && Objects.equals(items, cart.items);
     }
 
     public String getUsername() {
