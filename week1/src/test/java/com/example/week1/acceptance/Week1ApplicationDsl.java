@@ -127,4 +127,7 @@ public class Week1ApplicationDsl {
         assertEquals(phone, address.getPhone());
     }
 
+    public void confirmAddressInCartSummary(CartSummaryResponse summary, String address) {
+        assertEquals(address, summary.getAddress());
+    }
 }

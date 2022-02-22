@@ -92,7 +92,7 @@ class Week1ApplicationTests {
 		dsl.selectAddressToCart(dsl.loadDefaultAddress().getId());
 		CartSummaryResponse summary = dsl.summarizeCart();
 
-		assertEquals("Somewhere in Thailand", summary.getAddress());
+		dsl.confirmAddressInCartSummary(summary, "Somewhere in Thailand");
 	}
 
 	@Test
