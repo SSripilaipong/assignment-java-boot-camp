@@ -2,7 +2,6 @@ package com.example.week1.acceptance;
 
 import com.example.week1.delivery.address.AddressResponse;
 import com.example.week1.payment.PaymentMethodResponse;
-import com.example.week1.sales.cart.response.CartItemResponse;
 import com.example.week1.sales.cart.response.CartItemsResponse;
 import com.example.week1.sales.cart.response.CartSummaryResponse;
 import com.example.week1.sales.product.Product;
@@ -10,9 +9,6 @@ import com.example.week1.sales.product.Products;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class Week1ApplicationTests {
