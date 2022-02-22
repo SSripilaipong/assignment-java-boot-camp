@@ -3,6 +3,7 @@ package com.example.week1.unit.sales.cart;
 import com.example.week1.TestRequester;
 import com.example.week1.delivery.address.Address;
 import com.example.week1.delivery.address.AddressService;
+import com.example.week1.payment.PaymentMethod;
 import com.example.week1.payment.PaymentService;
 import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartService;
@@ -119,6 +120,18 @@ public class CartControllerTest {
 
         assert response != null;
         assertEquals("MyAddress", response.getAddress());
+    }
+
+    @Test
+    void shouldReturnCardNumberWhenSummarizeCart() {
+        when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
+        when(paymentService.getPaymentMethod(5678)).thenReturn(new PaymentMethod(5678, "M", "O", "CNum", "E", "999"));
+        when(cartService.getMyCart("MyUsername")).thenReturn(new Cart("MyUsername", null, 5678));
+
+        CartSummaryResponse response = requester.getWithToken("/cart", "MyToken", CartSummaryResponse.class).getBody();
+
+        assert response != null;
+        assertEquals("CNum", response.getCardNumber());
     }
 
     @Test
