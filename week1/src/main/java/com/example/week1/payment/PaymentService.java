@@ -9,6 +9,9 @@ public class PaymentService {
     @Autowired
     DefaultPaymentMethodRepository defaultPaymentMethodRepository;
 
+    @Autowired
+    PaymentMethodRepository paymentMethodRepository;
+
     public PaymentMethod getMyDefaultPaymentMethod(String username) {
         return defaultPaymentMethodRepository.findById(username)
                 .map(DefaultPaymentMethod::getPaymentMethod).orElse(null);
@@ -27,11 +30,11 @@ public class PaymentService {
     }
 
     public PaymentMethod getPaymentMethod(int paymentMethodId) {
-        return null; // TODO: implement
+        return paymentMethodRepository.findById(paymentMethodId).orElse(null);
     }
 
     public void setPaymentMethodRepository(PaymentMethodRepository paymentMethodRepository) {
-        // TODO: implement
+        this.paymentMethodRepository = paymentMethodRepository;
     }
 
 }
