@@ -162,6 +162,7 @@ PAYMENT_ID=$(curl -X GET http://localhost:8080/payment/method/default \
 [ดูรายละเอียด flow](#9-สั่งซื้อสินค้าด้วยตัวเลือกชำระเงิน-default-นั้น)
 ```shell
 curl -X PUT http://localhost:8080/cart/paymentMethod \
+  -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer '$AUTH_TOKEN \
   -d '{"paymentMethodId": '$PAYMENT_ID'}'
 ```
