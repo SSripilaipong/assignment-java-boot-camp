@@ -1,8 +1,13 @@
 package com.example.week1.payment;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class PaymentMethod {
+
+    @Id
     private Integer id;
     private String method;
     private String ownerName;

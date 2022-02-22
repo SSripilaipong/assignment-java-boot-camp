@@ -7,4 +7,8 @@ public class PaymentService {
     public PaymentMethod getMyDefaultPaymentMethod(String username) {
         return new PaymentMethod();
     }
+
+    public void setPaymentMethodRepository(DefaultPaymentMethodRepository paymentMethodRepository) {
+        // TODO: implement
+    }
 }
