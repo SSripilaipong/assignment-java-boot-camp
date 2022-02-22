@@ -82,4 +82,12 @@ public class Week1ApplicationDsl {
         assertEquals(paymentMethod.getExpire(), expire);
         assertEquals(paymentMethod.getCvv(), cvv);
     }
+
+    public void confirmProductDetail(Product product, String name, String description, String brand, String occasion, Double price) {
+        assertEquals(name, product.getName());
+        assertEquals(description, product.getDescription());
+        assertEquals(brand, product.getBrand());
+        assertEquals(occasion, product.getOccasion());
+        assertEquals(price, product.getPrice());
+    }
 }
