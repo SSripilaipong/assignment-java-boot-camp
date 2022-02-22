@@ -30,6 +30,10 @@ public class Week1ApplicationDsl {
         return driver.searchForProductWithKeyword(keyword);
     }
 
+    public void confirmNumberOfProducts(Products products, int numberOfProduct) {
+        assertEquals(numberOfProduct, products.size());
+    }
+
     public void confirmAllProductNamesContainKeyword(Products products, String keyword) {
         for(Product product: products) {
             assertTrue(product.getName().contains(keyword));
