@@ -71,10 +71,9 @@ class Week1ApplicationTests {
 		CartSummaryResponse summary = dsl.summarizeCart();
 
 		assertEquals(2, summary.getItems().size());
-		assertEquals(new CartItemResponse(0, "Adidas NMD R1 Pimeknit Core Black", 1, 9900.00),
-				summary.getItems().get(0));
-		assertEquals(new CartItemResponse(2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00),
-				summary.getItems().get(1));
+		dsl.confirmCartSummaryContainsItem(summary, 0, "Adidas NMD R1 Pimeknit Core Black", 1, 9900.00);
+		dsl.confirmCartSummaryContainsItem(summary, 2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00);
+
 		assertEquals(11097.00, summary.getTotalPrice());
 	}
 

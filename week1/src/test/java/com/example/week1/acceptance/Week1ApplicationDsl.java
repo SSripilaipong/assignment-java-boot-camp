@@ -10,6 +10,8 @@ import com.example.week1.sales.product.Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.hasItem;
 import static org.junit.jupiter.api.Assertions.*;
 
 @Component
@@ -100,5 +102,10 @@ public class Week1ApplicationDsl {
 
     public void confirmCartIsEmpty() {
         assertEquals(0, getCartItems().size());
+    }
+
+    public void confirmCartSummaryContainsItem(
+            CartSummaryResponse summary, int productId, String productName, int quantity, double pricePerUnit) {
+        assertThat(summary.getItems(), hasItem(new CartItemResponse(productId, productName, quantity, pricePerUnit)));
     }
 }
