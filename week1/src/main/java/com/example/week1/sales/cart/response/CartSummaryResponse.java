@@ -1,6 +1,7 @@
 package com.example.week1.sales.cart.response;
 
 import com.example.week1.delivery.address.AddressService;
+import com.example.week1.payment.PaymentService;
 import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartItem;
 import com.example.week1.sales.product.Product;
@@ -12,13 +13,14 @@ public class CartSummaryResponse {
     private ArrayList<CartItemResponse> items;
     private Double totalPrice;
     private String address;
+    private String cardNumber;
 
     public CartSummaryResponse() {
         items = new ArrayList<>();
     }
 
     public static CartSummaryResponse fromCart(
-            AddressService addressService, ProductService productService, Cart cart) {
+            PaymentService paymentService, AddressService addressService, ProductService productService, Cart cart) {
         CartSummaryResponse response = new CartSummaryResponse();
         double totalPrice = 0.0;
         for(CartItem item : cart.getItems()) {
@@ -29,6 +31,9 @@ public class CartSummaryResponse {
         response.setTotalPrice(totalPrice);
         if(cart.getAddressId() != null) {
             response.setAddress(addressService.getAddress(cart.getAddressId()).getAddress());
+        }
+        if(cart.getPaymentMethodId() != null) {
+            response.setCardNumber(paymentService.getPaymentMethod(cart.getPaymentMethodId()).getCardNumber());
         }
         return response;
     }
@@ -61,8 +66,12 @@ public class CartSummaryResponse {
         return address;
     }
 
+    private void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
     public String getCardNumber() {
-        return null;  // TODO: implement
+        return cardNumber;
     }
 
 }
