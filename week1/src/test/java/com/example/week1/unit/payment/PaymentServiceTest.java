@@ -14,6 +14,7 @@ import java.util.Optional;
 import static com.example.week1.unit.payment.PaymentDummyFactory.getDummyDefaultPaymentMethod;
 import static com.example.week1.unit.payment.PaymentDummyFactory.getDummyPaymentMethod;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -54,6 +55,16 @@ public class PaymentServiceTest {
         PaymentMethod paymentMethod = paymentService.getPaymentMethod(1234);
 
         assertEquals(getDummyPaymentMethod(), paymentMethod);
+    }
+
+    @Test
+    void shouldCheckIfAUserIsAnOwnerOfThePaymentMethod() {
+        PaymentService paymentService = getPaymentServiceWithMock();
+        when(paymentMethodRepository.findById(1234)).thenReturn(Optional.of(getDummyPaymentMethod()));
+
+        boolean isMine = paymentService.isMyPaymentMethod("MyUsername", 1234);
+
+        assertTrue(isMine);
     }
 
     private PaymentService getPaymentServiceWithMock() {

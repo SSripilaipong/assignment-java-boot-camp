@@ -52,7 +52,7 @@ public class Week1Application {
 
 	@PostConstruct
 	public void setInitialDefaultPaymentMethod() {
-		PaymentMethod paymentMethod = new PaymentMethod(1, "creditCard", "Santhapon Sripilaipong",
+		PaymentMethod paymentMethod = new PaymentMethod(1, "Santhapon", "creditCard", "Santhapon Sripilaipong",
 				"1111222233334444", "11/12", "999");
 		paymentService.setMyDefaultPaymentMethod("Santhapon", paymentMethod);
 	}

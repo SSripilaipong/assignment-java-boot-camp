@@ -9,6 +9,7 @@ public class PaymentMethod {
 
     @Id
     private Integer id;
+    private String owner;
     private String method;
     private String ownerName;
     private String cardNumber;
@@ -18,8 +19,9 @@ public class PaymentMethod {
     public PaymentMethod() {
     }
 
-    public PaymentMethod(Integer id, String method, String ownerName, String cardNumber, String expire, String cvv) {
+    public PaymentMethod(Integer id, String owner, String method, String ownerName, String cardNumber, String expire, String cvv) {
         this.id = id;
+        this.owner = owner;
         this.method = method;
         this.ownerName = ownerName;
         this.cardNumber = cardNumber;
@@ -32,7 +34,7 @@ public class PaymentMethod {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         PaymentMethod that = (PaymentMethod) o;
-        return Objects.equals(id, that.id) && Objects.equals(method, that.method) && Objects.equals(ownerName, that.ownerName) && Objects.equals(cardNumber, that.cardNumber) && Objects.equals(expire, that.expire) && Objects.equals(cvv, that.cvv);
+        return Objects.equals(owner, that.owner) && Objects.equals(id, that.id) && Objects.equals(method, that.method) && Objects.equals(ownerName, that.ownerName) && Objects.equals(cardNumber, that.cardNumber) && Objects.equals(expire, that.expire) && Objects.equals(cvv, that.cvv);
     }
 
     public Integer getId() {
@@ -82,4 +84,13 @@ public class PaymentMethod {
     public void setCvv(String cvv) {
         this.cvv = cvv;
     }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
 }

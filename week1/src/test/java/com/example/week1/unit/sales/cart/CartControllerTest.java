@@ -125,7 +125,7 @@ public class CartControllerTest {
     @Test
     void shouldReturnCardNumberWhenSummarizeCart() {
         when(tokenManager.decodeTokenToUsername("MyToken")).thenReturn("MyUsername");
-        when(paymentService.getPaymentMethod(5678)).thenReturn(new PaymentMethod(5678, "M", "O", "CNum", "E", "999"));
+        when(paymentService.getPaymentMethod(5678)).thenReturn(new PaymentMethod(5678, "U", "M", "O", "CNum", "E", "999"));
         when(cartService.getMyCart("MyUsername")).thenReturn(new Cart("MyUsername", null, 5678));
 
         CartSummaryResponse response = requester.getWithToken("/cart", "MyToken", CartSummaryResponse.class).getBody();
