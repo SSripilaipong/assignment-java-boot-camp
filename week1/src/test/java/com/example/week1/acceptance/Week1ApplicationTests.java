@@ -73,8 +73,7 @@ class Week1ApplicationTests {
 		dsl.confirmNumberOfCartItemInCartSummary(summary, 2);
 		dsl.confirmCartSummaryContainsItem(summary, 0, "Adidas NMD R1 Pimeknit Core Black", 1, 9900.00);
 		dsl.confirmCartSummaryContainsItem(summary, 2, "POCA SHOE NMD Sneakers Fashion", 3, 399.00);
-
-		assertEquals(11097.00, summary.getTotalPrice());
+		dsl.confirmTotalPriceOfCartSummary(summary, 11097.00);
 	}
 
 	@Test

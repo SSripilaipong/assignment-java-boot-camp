@@ -112,4 +112,8 @@ public class Week1ApplicationDsl {
     public void confirmNumberOfCartItemInCartSummary(CartSummaryResponse summary, int size) {
         assertEquals(size, summary.getItems().size());
     }
+
+    public void confirmTotalPriceOfCartSummary(CartSummaryResponse summary, double totalPrice) {
+        assertEquals(totalPrice, summary.getTotalPrice());
+    }
 }
