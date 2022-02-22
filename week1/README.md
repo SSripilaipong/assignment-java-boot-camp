@@ -79,6 +79,7 @@ flow นี้จะแสดงเฉพาะข้อมูลที่ user 
 [cURL script](#9-เลือกใช้ตัวเลือกการชำระเงิน-default-สำหรับตะกร้านี้)
 
 #### 10. เรียกดูสรุปการสั่งซื้อ ได้ผลลัพธ์ดังนี้
+[cURL script](#10-สรุปตะกร้า)
 
 ```json
 {
@@ -165,4 +166,11 @@ curl -X PUT http://localhost:8080/cart/paymentMethod \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer '$AUTH_TOKEN \
   -d '{"paymentMethodId": '$PAYMENT_ID'}'
+```
+
+#### 10. สรุปตะกร้า
+[ดูรายละเอียด flow](10-เรียกดูสรุปการสั่งซื้อ-ได้ผลลัพธ์ดังนี้)
+```shell
+curl -X GET http://localhost:8080/cart \
+  -H 'Authorization: Bearer '$AUTH_TOKEN
 ```
