@@ -26,7 +26,9 @@ public class PaymentService {
     }
 
     public boolean isMyPaymentMethod(String username, int paymentMethodId) {
-        return false;  // TODO: implement
+        return paymentMethodRepository.findById(paymentMethodId)
+                .map(paymentMethod -> paymentMethod.getOwner().equals(username))
+                .orElse(false);
     }
 
     public PaymentMethod getPaymentMethod(int paymentMethodId) {
