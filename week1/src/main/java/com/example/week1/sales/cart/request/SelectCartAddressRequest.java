@@ -1,15 +1,16 @@
 package com.example.week1.sales.cart.request;
 
 import com.example.week1.rest.JsonConvertible;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@Getter @Setter @NoArgsConstructor
 public class SelectCartAddressRequest implements JsonConvertible {
 
     private Integer addressId;
-
-    public SelectCartAddressRequest() {
-    }
 
     public SelectCartAddressRequest(Integer addressId) {
         this.addressId = addressId;
@@ -27,11 +28,4 @@ public class SelectCartAddressRequest implements JsonConvertible {
         return json.toString();
     }
 
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
 }
