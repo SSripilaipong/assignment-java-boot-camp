@@ -1,17 +1,18 @@
 package com.example.week1.sales.cart.response;
 
 import com.example.week1.sales.product.Product;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.Objects;
 
+@Getter @Setter @NoArgsConstructor
 public class CartItemResponse {
     private Integer productId;
     private String productName;
     private Integer quantity;
     private Double pricePerUnit;
-
-    public CartItemResponse() {
-    }
 
     public CartItemResponse(int productId, String productName, int quantity, double pricePerUnit) {
         this.productId = productId;
@@ -32,35 +33,4 @@ public class CartItemResponse {
         return Objects.equals(productId, that.productId) && Objects.equals(productName, that.productName) && Objects.equals(quantity, that.quantity) && Objects.equals(pricePerUnit, that.pricePerUnit);
     }
 
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public Double getPricePerUnit() {
-        return pricePerUnit;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setPricePerUnit(Double pricePerUnit) {
-        this.pricePerUnit = pricePerUnit;
-    }
 }
