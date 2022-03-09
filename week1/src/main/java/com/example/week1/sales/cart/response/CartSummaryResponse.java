@@ -6,9 +6,12 @@ import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartItem;
 import com.example.week1.sales.product.Product;
 import com.example.week1.sales.product.ProductService;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter @Setter
 public class CartSummaryResponse {
     private ArrayList<CartItemResponse> items;
     private Double totalPrice;
@@ -38,40 +41,8 @@ public class CartSummaryResponse {
         return response;
     }
 
-    public Double getTotalPrice() {
-        return totalPrice;
-    }
-
-    public void setTotalPrice(Double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
     private void addItem(CartItemResponse cartItemResponse) {
         items.add(cartItemResponse);
-    }
-
-    public ArrayList<CartItemResponse> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<CartItemResponse> items) {
-        this.items = items;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    private void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
-    }
-
-    public String getCardNumber() {
-        return cardNumber;
     }
 
 }
