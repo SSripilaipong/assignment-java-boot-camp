@@ -1,5 +1,8 @@
 package com.example.week1.sales.cart;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -7,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
+@Getter @Setter
 public class Cart {
     @Id
     private String username;
@@ -41,38 +45,6 @@ public class Cart {
         if (o == null || getClass() != o.getClass()) return false;
         Cart cart = (Cart) o;
         return Objects.equals(paymentMethodId, cart.paymentMethodId) && Objects.equals(addressId, cart.addressId) && Objects.equals(username, cart.username) && Objects.equals(items, cart.items);
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public ArrayList<CartItem> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<CartItem> items) {
-        this.items = items;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
-
-    public Integer getPaymentMethodId() {
-        return paymentMethodId;
-    }
-
-    public void setPaymentMethodId(Integer paymentMethodId) {
-        this.paymentMethodId = paymentMethodId;
     }
 
 }
