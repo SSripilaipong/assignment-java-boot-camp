@@ -1,12 +1,16 @@
 package com.example.week1.user.request;
 
 import com.example.week1.rest.JsonConvertible;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+@Getter @Setter @NoArgsConstructor
 public class LoginRequest implements JsonConvertible {
-    private final String username;
-    private final String password;
+    private String username;
+    private String password;
 
     public LoginRequest(String username, String password) {
         this.username = username;
@@ -23,13 +27,5 @@ public class LoginRequest implements JsonConvertible {
             return null;
         }
         return json.toString();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getUsername() {
-        return username;
     }
 }
