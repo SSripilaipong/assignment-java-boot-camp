@@ -1,9 +1,13 @@
 package com.example.week1.sales.product;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+@Getter @Setter
 public class Products implements Iterable<Product> {
     private final List<Product> products;
 
@@ -26,11 +30,6 @@ public class Products implements Iterable<Product> {
 
     public Product get(int index) {
         return products.get(index);
-    }
-
-    // for JSON serialization
-    public List<Product> getProducts() {
-        return products;
     }
 
     @Override
