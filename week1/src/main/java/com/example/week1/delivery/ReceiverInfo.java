@@ -1,6 +1,9 @@
 package com.example.week1.delivery;
 
 import com.example.week1.delivery.address.Address;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -9,14 +12,12 @@ import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class ReceiverInfo {
     @Id
     private String username;
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
-
-    public ReceiverInfo() {
-    }
 
     public ReceiverInfo(String username, Address address) {
         this.username = username;
@@ -31,19 +32,4 @@ public class ReceiverInfo {
         return Objects.equals(username, that.username) && Objects.equals(address, that.address);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }
