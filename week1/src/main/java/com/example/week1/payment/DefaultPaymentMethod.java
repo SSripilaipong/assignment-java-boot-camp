@@ -1,5 +1,9 @@
 package com.example.week1.payment;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -7,14 +11,12 @@ import javax.persistence.OneToOne;
 import java.util.Objects;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class DefaultPaymentMethod {
     @Id
     private String username;
     @OneToOne(cascade = CascadeType.ALL)
     private PaymentMethod paymentMethod;
-
-    public DefaultPaymentMethod() {
-    }
 
     public DefaultPaymentMethod(String username, PaymentMethod paymentMethod) {
         this.username = username;
@@ -29,19 +31,4 @@ public class DefaultPaymentMethod {
         return Objects.equals(username, that.username) && Objects.equals(paymentMethod, that.paymentMethod);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public PaymentMethod getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(PaymentMethod paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 }
