@@ -2,17 +2,18 @@ package com.example.week1.sales.cart.request;
 
 import com.example.week1.sales.cart.CartItem;
 import com.example.week1.rest.JsonConvertible;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Objects;
 
+@Getter @Setter @NoArgsConstructor
 public class CartItemAddingRequest implements JsonConvertible {
     private Integer productId;
     private Integer quantity;
-
-    public CartItemAddingRequest() {
-    }
 
     public CartItemAddingRequest(Integer productId, Integer quantity) {
         this.productId = productId;
@@ -34,22 +35,6 @@ public class CartItemAddingRequest implements JsonConvertible {
 
     public CartItem toCartItem() {
         return new CartItem(productId, quantity);
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     @Override
