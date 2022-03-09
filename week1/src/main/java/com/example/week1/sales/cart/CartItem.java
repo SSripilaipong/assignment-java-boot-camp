@@ -1,14 +1,16 @@
 package com.example.week1.sales.cart;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Getter @Setter @NoArgsConstructor
 public class CartItem implements Serializable {
     private Integer productId;
     private Integer quantity;
-
-    public CartItem() {
-    }
 
     public CartItem(Integer productId, Integer quantity) {
         this.productId = productId;
@@ -23,19 +25,4 @@ public class CartItem implements Serializable {
         return Objects.equals(productId, cartItem.productId) && Objects.equals(quantity, cartItem.quantity);
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
 }
