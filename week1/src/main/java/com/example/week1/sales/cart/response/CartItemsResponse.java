@@ -4,9 +4,12 @@ import com.example.week1.sales.cart.Cart;
 import com.example.week1.sales.cart.CartItem;
 import com.example.week1.sales.product.Product;
 import com.example.week1.sales.product.ProductService;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 
+@Getter @Setter
 public class CartItemsResponse {
     private ArrayList<CartItemResponse> items;
 
@@ -29,14 +32,6 @@ public class CartItemsResponse {
 
     public CartItemResponse get(int index) {
         return items.get(index);
-    }
-
-    public ArrayList<CartItemResponse> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<CartItemResponse> items) {
-        this.items = items;
     }
 
     public Integer size() {
