@@ -1,7 +1,12 @@
 package com.example.week1.delivery.address;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Getter @Setter @NoArgsConstructor
 public class AddressResponse {
 
     private Integer id;
@@ -11,9 +16,6 @@ public class AddressResponse {
     private String district;
     private String province;
     private String phone;
-
-    public AddressResponse() {
-    }
 
     public AddressResponse(Integer id, String fullName, String address, String postCode, String district,
                            String province, String phone) {
@@ -45,59 +47,4 @@ public class AddressResponse {
         return Objects.equals(id, that.id) && Objects.equals(fullName, that.fullName) && Objects.equals(address, that.address) && Objects.equals(postCode, that.postCode) && Objects.equals(district, that.district) && Objects.equals(province, that.province) && Objects.equals(phone, that.phone);
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }
