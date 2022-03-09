@@ -1,10 +1,15 @@
 package com.example.week1.sales.product;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
+@Getter @Setter
 public class Product {
     @Id
     private Integer id;
@@ -26,30 +31,6 @@ public class Product {
         this.occasion = occasion;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -59,27 +40,4 @@ public class Product {
                 Objects.equals(price, product.price);
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getOccasion() {
-        return occasion;
-    }
-
-    public void setOccasion(String occasion) {
-        this.occasion = occasion;
-    }
 }
